@@ -1,12 +1,14 @@
 import React, {useEffect} from "react";
-import {loadGames} from "./reducers/actions/gamesActions";
+import {loadPopularGames, loadNewGames, loadUpcomingGames} from "./reducers/actions/gamesActions";
 import {useDispatch} from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadGames())
+    dispatch(loadPopularGames())
+    dispatch(loadNewGames())
+    dispatch(loadUpcomingGames())
   }, [])
 
   return (
