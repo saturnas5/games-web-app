@@ -11,7 +11,7 @@ html {
 body {
   box-sizing: border-box;
   background-color: #1c201c;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Montserrat', sans-serif; }
 
 .footer {
   padding: 5rem 10rem;
@@ -85,6 +85,96 @@ body {
       font-size: 2rem; }
       .footer__terms-link:link:hover, .footer__terms-link:visited:hover {
         cursor: pointer; }
+
+.game {
+  position: relative;
+  height: 45rem;
+  background-color: #333633;
+  transition: all .3s; }
+  .game a:link,
+  .game a:visited {
+    text-decoration: none; }
+  .game:hover {
+    transform: scale(1.05); }
+  .game__img {
+    width: 100%;
+    height: 17rem;
+    display: block;
+    object-fit: cover; }
+  .game__platforms {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem; }
+    .game__platforms-icon {
+      fill: #ffffff;
+      width: 2rem;
+      height: 2rem;
+      transition: all .1s; }
+      .game__platforms-icon:hover {
+        transform: scale(1.2); }
+  .game__title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    padding: 1rem; }
+  .game__cta {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem; }
+    .game__cta-btn {
+      background-color: rgba(255, 255, 255, 0.4);
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: .5rem 1rem;
+      font-family: inherit;
+      font-weight: 500;
+      transition: all .2s; }
+      .game__cta-btn span {
+        color: #ffffff;
+        transition: all .2s; }
+      .game__cta-btn-icon {
+        fill: #ffffff;
+        transition: all .2s; }
+      .game__cta-btn:hover {
+        background-color: #ffffff;
+        cursor: pointer; }
+      .game__cta-btn:hover span {
+        color: black; }
+      .game__cta-btn:hover .game__cta-btn-icon {
+        fill: black; }
+  .game__info {
+    position: absolute;
+    top: 32rem;
+    left: 0;
+    width: 100%; }
+    .game__info-released {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1rem;
+      border-bottom: 1px solid rgba(133, 130, 130, 0.5); }
+      .game__info-released span {
+        color: rgba(190, 190, 190, 0.5);
+        font-size: 1.2rem; }
+    .game__info-rating {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1rem;
+      border-bottom: 1px solid rgba(133, 130, 130, 0.5); }
+      .game__info-rating span {
+        color: rgba(190, 190, 190, 0.5);
+        font-size: 1.2rem; }
+    .game__info-genres {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1rem 3rem 1rem;
+      overflow-x: hidden; }
+      .game__info-genres-box {
+        display: flex;
+        gap: .5rem; }
+      .game__info-genres span {
+        color: rgba(190, 190, 190, 0.5);
+        font-size: 1.2rem; }
 
 .header {
   display: flex;
@@ -178,5 +268,25 @@ body {
       opacity: 1;
       visibility: visible; }
 
+.games {
+  display: grid;
+  grid-template-rows: 5rem auto;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  padding: 0 2rem;
+  grid-column-gap: 3rem;
+  grid-row-gap: 3rem; }
+  .games__sort {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1; }
+
 .main {
-  height: 50vh; }
+  display: grid;
+  grid-template-columns: 25rem 1fr;
+  padding: 5rem 10rem 15rem 10rem; }
+  .main__menu {
+    background-color: chocolate;
+    width: 100%;
+    height: 50vh;
+    padding-top: 7rem; }
+  .main__games {
+    width: 100%; }

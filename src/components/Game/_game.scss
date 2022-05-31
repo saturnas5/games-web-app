@@ -1,0 +1,135 @@
+.game {
+  position: relative;
+  height: 45rem;
+  background-color: #333633;
+  transition: all .3s;
+
+  a:link,
+  a:visited {
+    text-decoration: none;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+
+  }
+
+  &__img {
+    width: 100%;
+    height: 17rem;
+    display: block;
+    object-fit: cover;
+
+  }
+
+  &__platforms {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+
+    &-icon {
+      fill: #ffffff;
+      width: 2rem;
+      height: 2rem;
+      transition: all .1s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    padding: 1rem;
+  }
+
+  &__cta {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+
+    &-btn {
+      background-color: hsla(0,0%,100%,.4);
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: .5rem 1rem;
+      font-family: inherit;
+      font-weight: 500;
+      transition: all .2s;
+
+      span {
+        color: #ffffff;
+        transition: all .2s;
+      }
+
+      &-icon {
+        fill: #ffffff;
+        transition: all .2s;
+      }
+
+      &:hover {
+        background-color: #ffffff;
+        cursor: pointer;
+      }
+      &:hover span {
+        color: black;
+      }
+      &:hover .game__cta-btn-icon {
+        fill: black;
+      }
+    }
+  }
+
+  &__info {
+    position: absolute;
+    top: 32rem;
+    left: 0;
+    width: 100%;
+
+    &-released {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1rem;
+      border-bottom: 1px solid rgba(133, 130, 130, 0.5);
+
+      span {
+        color: rgba(190, 190, 190, 0.5);
+        font-size: 1.2rem;
+      }
+    }
+
+    &-rating {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1rem;
+      border-bottom: 1px solid rgba(133, 130, 130, 0.5);
+
+      span {
+        color: rgba(190, 190, 190, 0.5);
+        font-size: 1.2rem;
+      }
+    }
+
+    &-genres {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1rem 3rem 1rem;
+      overflow-x: hidden;
+
+      &-box {
+        display: flex;
+        gap: .5rem;
+      }
+
+      span {
+        color: rgba(190, 190, 190, 0.5);
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+}

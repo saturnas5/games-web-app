@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <header className='header'>
             <div className="header__logo">
-                <img src={logo} alt="Logo" className="header__logo-img"/>
+                <Link to='/'><img src={logo} alt="Logo" className="header__logo-img"/></Link>
             </div>
             <div className="header__search">
                 <input type="text" className="header__search-input" placeholder='Search'/>
