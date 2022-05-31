@@ -1,5 +1,5 @@
 import axios from "axios";
-import {popularGamesURL, upcomingGamesURL, newGamesURL} from "../../api/api";
+import {popularGamesURL, upcomingGamesURL, newGamesURL, currentGameURL} from "../../api/api";
 
 export const loadPopularGames = () => async (dispatch) => {
     const popularGamesData = await axios.get(popularGamesURL());
@@ -27,3 +27,12 @@ export const loadUpcomingGames = () => async (dispatch) => {
         payload: upcomingGamesData.data.results
     });
 };
+
+export const loadCurrentGame = (id) => async (dispatch) => {
+    const currentGameData = await axios.get(currentGameURL(id))
+
+    dispatch({
+        type: 'fetch-current-game',
+        payload: currentGameData.data
+    })
+}

@@ -1,10 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import playstation4 from '../../img/playstation.svg'
-import xbox from '../../img/xbox.svg';
-import nintendo from '../../img/nintendo.svg';
-import apple from '../../img/apple.svg';
-import window from '../../img/windows.svg';
 import {
     FaWindows,
     FaPlaystation,
@@ -18,41 +13,37 @@ import {
 } from "react-icons/fa";
 
 
-const Game = ({ game:{ name, released, platforms, background_image, rating, ratings_count, genres }  }) => {
-
-    platforms.map(plat => console.log(plat.platform.slug))
-
+const Game = ({ game:{ name, released, platforms, background_image, rating, ratings_count, genres, slug, id }  }) => {
     function setPlatforms(platform) {
         switch (platform) {
             case 'playstation4':
-                return <FaPlaystation className='game__platforms-icon'/>;
+                return <FaPlaystation key='playstation4' className='game__platforms-icon'/>;
             case 'playstation5':
-                return <FaPlaystation className='game__platforms-icon'/>
+                return <FaPlaystation key='playstation5' className='game__platforms-icon'/>
             case 'xbox-one':
-                return <FaXbox className='game__platforms-icon'/>;
+                return <FaXbox key='xbox-one' className='game__platforms-icon'/>;
             case 'xbox-series-x':
-                return <FaXbox className='game__platforms-icon'/>;
+                return <FaXbox key='xbox-series-x' className='game__platforms-icon'/>;
             case 'nintendo-switch':
-                return <FaGamepad className='game__platforms-icon'/>;
+                return <FaGamepad key='nintendo-switch' className='game__platforms-icon'/>;
             case 'nintendo-3ds':
-                return <FaGamepad className='game__platforms-icon'/>;
+                return <FaGamepad key='nintendo-3ds' className='game__platforms-icon'/>;
             case 'ios':
-                return <FaApple className='game__platforms-icon'/>;
+                return <FaApple key='ios' className='game__platforms-icon'/>;
             case 'macos':
-                return <FaApple className='game__platforms-icon'/>;
+                return <FaApple key='macos' className='game__platforms-icon'/>;
             case 'pc':
-                return <FaWindows className='game__platforms-icon'/>;
+                return <FaWindows key='pc' className='game__platforms-icon'/>;
             case 'linux':
-                return <FaLinux className='game__platforms-icon'/>;
+                return <FaLinux key='linux' className='game__platforms-icon'/>;
             case 'android':
-                return <FaAndroid className='game__platforms-icon'/>;
-
+                return <FaAndroid key='android' className='game__platforms-icon'/>;
         }
     }
 
     return (
         <div className="game">
-            <Link to='/'>
+            <Link to={`/game/${slug}/${id}`}>
                 <img src={background_image} alt="" className="game__img"/>
                 <div className="game__platforms">
                     {platforms.map(platform => {
@@ -79,12 +70,11 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
                         <span>Genres:</span>
                         <div className="game__info-genres-box">
                             {genres.map(genre => {
-                                return <span>{genre.name}</span>
+                                return <Link key={genre.name} className="game__info-genres-link" to={`/genres/${genre.slug}`}>{genre.name}</Link>
                             })}
                         </div>
                     </div>
                 </div>
-
         </div>
     );
 };

@@ -1,17 +1,25 @@
-import React, {useEffect} from "react";
-import {loadPopularGames, loadNewGames, loadUpcomingGames} from "./reducers/actions/gamesActions";
+import React from "react";
+import { Route, Switch } from 'react-router-dom';
 
 import Main from "./pages/Main";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import GameDetails from "./pages/GameDetails";
 
 function App() {
 
   return (
     <div className="App">
         <Header/>
-      <Main/>
-      <Footer/>
+        <Switch>
+            <Route exact path='/'>
+                <Main/>
+            </Route>
+            <Route path='/game/:slug/:id'>
+                <GameDetails/>
+            </Route>
+        </Switch>
+        <Footer/>
     </div>
   );
 }
