@@ -3,6 +3,7 @@ import {loadPopularGames, loadNewGames, loadUpcomingGames} from "./reducers/acti
 
 import Main from "./pages/Main";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
         <Header/>
       <Main/>
+      <Footer/>
     </div>
   );
 }

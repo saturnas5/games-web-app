@@ -1,0 +1,109 @@
+.footer {
+  padding: 5rem 10rem;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  border-top: 1px solid #ededed;
+
+  &__logo {
+    width: auto;
+    height: 7rem;
+    display: block;
+    object-fit: cover;
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+
+    &-box {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 4rem;
+      height: 4rem;
+      fill: #ffffff;
+      transition: all .2s;
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__newsletter {
+    justify-self: center;
+    width: 30%;
+
+    &-title {
+      color: #ffffff;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      margin-bottom: 10rem;
+    }
+
+    &-form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 7rem;
+
+      label {
+        color: #ffffff;
+      }
+    }
+
+    &-submit {
+      padding: 1rem 3rem;
+      background-color: transparent;
+      border: 3px solid #ffffff;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all .2s;
+
+      &:hover {
+        transform: scale(1.08);
+      }
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__terms {
+    justify-self: center;
+    align-self: center;
+
+    &-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    &-item {
+
+    }
+
+    &-link:link,
+    &-link:visited {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 2rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
