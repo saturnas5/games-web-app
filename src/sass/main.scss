@@ -1,0 +1,14 @@
+@import "./base";
+@import "./mixins";
+@import "./utilities";
+@import "./variables";
+
+//COMPONENTS
+@import "../components/Footer/footer";
+@import "../components/Game/game";
+@import "../components/Header/header";
+
+
+//PAGES
+@import "../pages/GameDetails/gameDetails";
+@import "../pages/Main/main";
