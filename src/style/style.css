@@ -293,7 +293,81 @@ body {
   background-repeat: no-repeat;
   background-position: center; }
   .game-details__info {
-    height: 80rem; }
+    display: grid;
+    grid-template-columns: 1fr 1fr; }
+  .game-details__video-box {
+    grid-column: 1 / 2;
+    padding: 2rem; }
+    .game-details__video-box img {
+      width: 100%;
+      display: block;
+      object-fit: cover; }
+  .game-details__developers {
+    padding: 3rem 0;
+    border-bottom: 1px solid #ededed; }
+    .game-details__developers-title {
+      color: #ffffff;
+      margin-bottom: 2rem;
+      font-size: 2rem; }
+    .game-details__developers-link:link, .game-details__developers-link:visited {
+      text-decoration: none;
+      color: #1c201c;
+      background-color: #ffffff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      padding: .5rem 1rem;
+      border-radius: 5px; }
+  .game-details__more-info {
+    grid-column: 2/-1; }
+  .game-details__platforms {
+    padding: 2rem 2rem 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem; }
+    .game-details__platforms span {
+      background-color: #ffffff;
+      padding: .5rem 1rem;
+      font-size: 1.4rem;
+      font-weight: 500;
+      border-radius: 5px; }
+  .game-details__title {
+    color: #ffffff;
+    font-size: 5rem;
+    padding: 1rem 2rem 0 2rem; }
+  .game-details__genres {
+    padding: .5rem 2rem 1rem 2rem;
+    display: flex;
+    gap: 1rem; }
+    .game-details__genres-link:link, .game-details__genres-link:visited {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      transition: all .2s; }
+      .game-details__genres-link:link:hover, .game-details__genres-link:visited:hover {
+        transform: scale(1.08); }
+  .game-details__screens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    grid-auto-rows: 1fr 1fr;
+    padding: 2rem; }
+    .game-details__screens img {
+      height: 16rem;
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      cursor: pointer; }
+  .game-details__description {
+    grid-column: 1 / -1;
+    padding: 0 2rem; }
+    .game-details__description p {
+      color: #ffffff;
+      font-size: 2rem;
+      line-height: 1.6;
+      font-weight: 500; }
 
 .main {
   display: grid;

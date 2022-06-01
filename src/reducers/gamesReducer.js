@@ -3,7 +3,8 @@ const initState = {
     newGames: [],
     upcoming: [],
     currentGame: {},
-    searched: []
+    currentGameScreens: {},
+    searched: [],
 }
 
 const gamesReducer = (state = initState, action) => {
@@ -16,6 +17,8 @@ const gamesReducer = (state = initState, action) => {
             return {...state, upcoming: action.payload}
         case 'fetch-current-game':
             return {...state, currentGame: action.payload}
+        case 'fetch-current-game-screens':
+            return {...state, currentGameScreens: action.payload}
         default:
             return state;
     }
