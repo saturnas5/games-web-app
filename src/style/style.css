@@ -297,6 +297,11 @@ body {
     grid-row: 1 / 2;
     grid-column: 1 / -1; }
 
+.load-more {
+  height: 5px;
+  width: 100%;
+  grid-column: 1 / -1; }
+
 .side-button:hover .side-button__icon-box {
   background-color: #ffffff; }
 

@@ -15,6 +15,7 @@ import {
     FaListUl
 } from "react-icons/fa";
 import Loader from "../../components/Loader";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const GameDetails = () => {
     const dispatch = useDispatch();
@@ -107,8 +108,8 @@ const GameDetails = () => {
                 <div className="game-details__description">
                     <p>{currentGame.description_raw}</p>
                 </div>
-
             </div>
+            <ScrollToTop/>
         </div>
     );
 };
