@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {loadPopularGames, loadNewGames, loadUpcomingGames} from "../../reducers/actions/gamesActions";
 import SideMenu from "../../components/SideMenu";
 import Games from "../../components/Games";
@@ -12,6 +12,7 @@ const Main = () => {
         dispatch(loadPopularGames())
         dispatch(loadNewGames())
         dispatch(loadUpcomingGames())
+
     }, [])
 
     return (
