@@ -3,12 +3,14 @@ import {popularGamesURL, upcomingGamesURL, newGamesURL, currentGameURL, currentG
 
 
 export const loadPopularGames = (page) => async (dispatch) => {
+    dispatch({type: 'fetch-loading', payload: true})
     const popularGamesData = await axios.get(popularGamesURL(page));
 
     dispatch({
         type: 'fetch-popular-games',
         payload: popularGamesData.data.results
     });
+    dispatch({type: 'fetch-loading', payload: false})
 };
 
 export const loadNewGames = () => async (dispatch) => {

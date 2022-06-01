@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Game from "../Game";
 import ScrollToTop from "../ScrollToTop";
 import {loadNewGames, loadPopularGames, loadUpcomingGames} from "../../reducers/actions/gamesActions";
+import Loader from "../Loader";
 
 const Games = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const Games = () => {
     useEffect(() => {
         let isCancelled = false;
 
-        dispatch(loadPopularGames(1))
+        dispatch(loadPopularGames(games.popular.page))
         // dispatch(loadNewGames())
         // dispatch(loadUpcomingGames())
 
@@ -21,35 +22,40 @@ const Games = () => {
         }
     }, [])
 
+
     // intersection observer
     const loader = useRef();
+    function Observer() {
+        useEffect(() => {
 
-    useEffect(() => {
-
-        let options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 1
-        };
-
-        let i = 2;
-        function loadData() {
-            dispatch(loadPopularGames(i))
-            i++;
-        }
-
-        let observer = new IntersectionObserver((entities) => {
-            const target = entities[0]
-            if(target.isIntersecting) {
-                loadData();
+            let options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 1
+            };
+            function loadData(page) {
+                dispatch(loadPopularGames(page))
             }
-        }, options)
 
-        if(loader.current) {
-            observer.observe(loader.current)
-        }
+            let observer = new IntersectionObserver((entities) => {
+                const target = entities[0]
+                if(target.isIntersecting) {
+                    loadData(games.popular.page);
+                }
+            }, options)
 
-    }, [])
+            if(loader.current) {
+                observer.observe(loader.current)
+            }
+
+            return () => observer.disconnect()
+
+        }, [])
+
+        return null;
+    }
+
+
 
     // intersection observer
 
@@ -63,10 +69,12 @@ const Games = () => {
                 </select>
             </div>
 
-            {games[showBy].map(game => {
-                return <Game key={game.id} game={game} />
+            {games[showBy].games.map((game, index) => {
+                return <Game key={index} game={game} />
             })}
-            <div className="load-more" ref={loader}></div>
+            {games.isLoading ? null : <Observer/>}
+            {games[showBy].games && <div className="load-more" ref={loader}></div>}
+            {games.isLoading ? <Loader/> : null}
             <ScrollToTop/>
         </section>
     );
