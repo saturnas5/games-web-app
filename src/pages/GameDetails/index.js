@@ -14,6 +14,7 @@ import {
     FaPlus,
     FaListUl
 } from "react-icons/fa";
+import Loader from "../../components/Loader";
 
 const GameDetails = () => {
     const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const GameDetails = () => {
     }
 
     if(isLoading) {
-        return <p>Loading</p>
+        return <Loader/>
     }
     return (
         <div className='game-details' style={{backgroundImage: `linear-gradient(to bottom, rgba(0,0,0, .7), rgba(0,0,0, 1)), url(${currentGame.background_image})`, }}>
