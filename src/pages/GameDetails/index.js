@@ -27,7 +27,11 @@ const GameDetails = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setMainImage(currentGame.background_image_additional)
+        window.document.title = `${currentGame.name} | YourWebsiteName.com`
+    }, [])
+
+    useEffect(() => {
+        setMainImage(currentGame.background_image_additional || currentGame.background_image)
     }, [currentGame])
 
     useEffect(() => {
@@ -84,7 +88,7 @@ const GameDetails = () => {
                     <div className="game-details__developers">
                         <h4 className="game-details__developers-title">Developers</h4>
                         {currentGame.developers.map(dev => {
-                            return <Link className="game-details__developers-link" to={`/developers/${dev.slug}`}>{dev.name}</Link>
+                            return <Link key={dev.id} className="game-details__developers-link" to={`/developers/${dev.slug}`}>{dev.name}</Link>
                         })}
                     </div>
                 </div>
@@ -98,7 +102,7 @@ const GameDetails = () => {
                     <h1 className='game-details__title'>{currentGame.name}</h1>
                     <div className="game-details__genres">
                         {currentGame.genres.map(genre => {
-                            return <Link className='game-details__genres-link' to={`/genres/${genre.slug}`}>{genre.name}</Link>
+                            return <Link key={genre.id} className='game-details__genres-link' to={`/genres/${genre.slug}`}>{genre.name}</Link>
                         })}
                     </div>
                     <div className="game-details__screens">

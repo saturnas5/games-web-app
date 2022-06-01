@@ -25,6 +25,10 @@ const gamesReducer = (state = initState, action) => {
             return {...state, currentGameScreens: action.payload}
         case 'fetch-loading':
             return {...state, isLoading: action.payload}
+        case 'fetch-search-game':
+            return {...state, searched: action.payload}
+        case 'clear-search-game':
+            return {...state, searched: []}
         default:
             return state;
     }

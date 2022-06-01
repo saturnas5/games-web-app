@@ -1,19 +1,42 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import logo from '../../img/logo-white.png';
 import user from '../../img/user.jpg';
 import {FaBell, FaPlus, FaEllipsisH} from 'react-icons/fa';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
+import SearchInput from "../SearchInput";
+import {useSelector, useDispatch} from "react-redux";
+import {loadSearchedGame, clearSearchedGame} from "../../reducers/actions/gamesActions";
 
 const Header = () => {
+    const games = useSelector(state => state.games);
+    const dispatch = useDispatch();
+    const [searchTerm, setSearchTerm] = useState('');
+    const [timer, setTimer] = useState(null);
+    const location = useLocation();
+
+    useEffect(() => {
+        setSearchTerm('')
+        dispatch(clearSearchedGame())
+    }, [location.pathname])
+
+    const inputChanged = e => {
+        setSearchTerm(e);
+
+        clearTimeout(timer);
+
+        const newTimer = setTimeout(() => {
+            dispatch(loadSearchedGame(searchTerm))
+        }, 1000);
+
+        setTimer(newTimer);
+    };
 
     return (
         <header className='header'>
             <div className="header__logo">
                 <Link to='/'><img src={logo} alt="Logo" className="header__logo-img"/></Link>
             </div>
-            <div className="header__search">
-                <input type="text" className="header__search-input" placeholder='Search'/>
-            </div>
+            <SearchInput games={games} value={searchTerm} onInputChange={inputChanged}/>
             <nav className="header__user-nav">
                 <ul className="header__user-nav-list">
                     <li className="header__user-nav-item">

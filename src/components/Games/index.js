@@ -11,6 +11,10 @@ const Games = () => {
     const [showBy, setShowBy] = useState('popular');
 
     useEffect(() => {
+        window.document.title = `Best website for games info | YourWebsiteName.com`
+    }, [])
+
+    useEffect(() => {
         let isCancelled = false;
 
         dispatch(loadPopularGames(games.popular.page))
@@ -54,9 +58,6 @@ const Games = () => {
 
         return null;
     }
-
-
-
     // intersection observer
 
     return (
@@ -68,9 +69,8 @@ const Games = () => {
                     <option value="upcoming">Upcoming</option>
                 </select>
             </div>
-
-            {games[showBy].games.map((game, index) => {
-                return <Game key={index} game={game} />
+            {games[showBy].games.map(game => {
+                return <Game key={game.id} game={game} />
             })}
             {games.isLoading ? null : <Observer/>}
             {games[showBy].games && <div className="load-more" ref={loader}></div>}
