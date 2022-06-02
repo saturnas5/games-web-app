@@ -202,25 +202,72 @@ body {
       align-items: center;
       list-style: none;
       gap: 2rem; }
-    .header__user-nav-item a {
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 1.6rem; }
-      .header__user-nav-item a span {
-        font-size: 1.4rem;
-        width: 100%;
-        display: block; }
-    .header__user-nav-item-img {
-      display: block;
-      object-fit: cover;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      border: 2px solid #fff; }
+    .header__user-nav-item {
+      position: relative; }
+      .header__user-nav-item a {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 1.6rem; }
+        .header__user-nav-item a span {
+          font-size: 1.4rem;
+          width: 100%;
+          display: block; }
+      .header__user-nav-item-img {
+        display: block;
+        object-fit: cover;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        border: 2px solid #fff; }
+      .header__user-nav-item-settings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        min-height: 10rem;
+        background-color: #ffffff;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all .2s; }
+        .header__user-nav-item-settings:hover {
+          opacity: 1;
+          visibility: visible; }
+        .header__user-nav-item-settings-link:link, .header__user-nav-item-settings-link:visited, .header__user-nav-item-settings-link {
+          color: black;
+          font-size: 1.4rem;
+          cursor: pointer; }
+        .header__user-nav-item-settings span {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: black;
+          color: #ffffff;
+          padding: 1rem 2rem;
+          width: 100%;
+          font-weight: 500; }
     .header__user-nav-icon {
       width: 2rem;
       height: 2rem;
-      fill: #ffffff; }
+      fill: #ffffff;
+      cursor: pointer; }
+      .header__user-nav-icon:hover + .header__user-nav-item-settings {
+        opacity: 1;
+        visibility: visible; }
+  .header__login-box {
+    width: 25rem;
+    display: flex;
+    justify-content: flex-end; }
+  .header__login-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 500; }
 
 .form-input {
   position: relative;

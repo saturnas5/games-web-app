@@ -26,6 +26,7 @@
     }
 
     &-item {
+      position: relative;
 
       a {
         text-decoration: none;
@@ -47,12 +48,74 @@
         border-radius: 50%;
         border: 2px solid #fff;
       }
+
+      &-settings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        min-height: 10rem;
+        background-color: #ffffff;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all .2s;
+
+        &:hover {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        &-link:link,
+        &-link:visited,
+        &-link {
+          color: black;
+          font-size: 1.4rem;
+          cursor: pointer;
+        }
+
+        span {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: black;
+          color: #ffffff;
+          padding: 1rem 2rem;
+          width: 100%;
+          font-weight: 500;
+        }
+      }
+
     }
 
     &-icon {
       width: 2rem;
       height: 2rem;
       fill: #ffffff;
+      cursor: pointer;
+
+      &:hover + .header__user-nav-item-settings {
+        opacity: 1;
+        visibility: visible;
+      }
     }
+  }
+
+  &__login-box {
+    width: 25rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__login-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 500;
   }
 }

@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import GameDetails from "./pages/GameDetails";
 import Login from "./pages/Login";
+import User from "./pages/User";
 
 function App() {
     const user = useSelector(state => state.user);
@@ -17,7 +18,6 @@ function App() {
         if(!user.isLoggedIn) {
             dispatch(tryLocalSignin());
         }
-        console.log('user not logged')
     }, [])
 
   return (
@@ -32,6 +32,9 @@ function App() {
             </Route>
             <Route exact path='/login'>
                 <Login/>
+            </Route>
+            <Route exact path='/user'>
+                <User/>
             </Route>
         </Switch>
         <Footer/>

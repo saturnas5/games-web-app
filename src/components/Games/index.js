@@ -65,8 +65,7 @@ const Games = () => {
         return () => {
             isCancelled = true;
         }
-    }, [location, params])
-
+    }, [location, params, dispatch])
 
     // intersection observer
     const loader = useRef();

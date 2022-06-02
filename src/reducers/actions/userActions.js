@@ -1,3 +1,4 @@
+import {generate_token} from "../../utils/_utils";
 
 
 export const tryLocalSignin = () => async (dispatch) => {
@@ -13,3 +14,19 @@ export const tryLocalSignin = () => async (dispatch) => {
         console.log(err);
     }
 };
+
+export const userSignin = () => (dispatch) => {
+    const token = generate_token();
+    localStorage.setItem('token', token);
+    dispatch({
+        type: 'user-signin',
+        payload: token
+    })
+}
+
+export const userLogOut = () => (dispatch) => {
+    localStorage.removeItem('token');
+    dispatch({
+        type: 'user-logout',
+    })
+}

@@ -16,6 +16,7 @@ const initState = {
         lastName: null,
         email: null,
         password: null,
+        profileImg: null,
     },
 };
 
@@ -23,6 +24,10 @@ const userReducer = (state = initState, action) => {
     switch (action.type) {
         case 'local-signin':
             return {...state, isLoggedIn: true, token: action.payload}
+        case 'user-signin':
+            return {...state, isLoggedIn: true, token: action.payload}
+        case 'user-logout':
+            return {...state, isLoggedIn: false, token: null}
         default:
             return state;
     };

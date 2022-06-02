@@ -1,7 +1,13 @@
 import React, {useState} from "react";
 import FormInput from "../../components/FormInput";
+import {useDispatch} from "react-redux";
+import {userSignin} from "../../reducers/actions/userActions";
+import {useHistory} from 'react-router-dom';
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('')
@@ -9,8 +15,17 @@ const Login = () => {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
 
+
     const handleLoginForm = (e) => {
         e.preventDefault();
+        if(!loginEmail) {
+            return;
+        }
+        if(!loginPassword) {
+            return;
+        }
+        dispatch(userSignin());
+        history.push('/')
     }
 
     const handleRegisterForm = (e) => {
