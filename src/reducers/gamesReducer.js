@@ -16,6 +16,10 @@ const initState = {
     genres : {
         games: [],
         page: 1
+    },
+    date: {
+        games: [],
+        page: 1
     }
 }
 
@@ -45,6 +49,10 @@ const gamesReducer = (state = initState, action) => {
             return {...state, genres: {...state.genres, games: [...state.genres.games, ...action.payload], page: state.genres.page + 1}}
         case 'clear-games-by-genre':
             return {...state, genres: {...state.genres, games: []}, page: 1}
+        case 'fetch-games-by-date':
+            return {...state, date: {...state.date, games: [...state.date.games, ...action.payload], page: state.date.page + 1}}
+        case 'clear-games-by-date':
+            return {...state, date: {...state.date, games: []}, page: 1}
         default:
             return state;
     }

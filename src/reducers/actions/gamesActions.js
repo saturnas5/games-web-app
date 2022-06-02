@@ -8,18 +8,24 @@ import {
     searchGameURL,
     gamesByPlatformURL,
     gamesByGenreURL,
+    gamesByDateURL,
 } from "../../api/api";
 import {wait} from "@testing-library/user-event/dist/utils";
 
 
 export const loadPopularGames = (page) => async (dispatch) => {
     dispatch({type: 'fetch-loading', payload: true})
-    const popularGamesData = await axios.get(popularGamesURL(page));
 
-    dispatch({
-        type: 'fetch-popular-games',
-        payload: popularGamesData.data.results
-    });
+    try {
+        const popularGamesData = await axios.get(popularGamesURL(page));
+        dispatch({
+            type: 'fetch-popular-games',
+            payload: popularGamesData.data.results
+        });
+    } catch (err) {
+        console.log(err)
+    }
+
     dispatch({type: 'fetch-loading', payload: false})
 };
 
@@ -42,31 +48,43 @@ export const loadUpcomingGames = () => async (dispatch) => {
 };
 
 export const loadCurrentGame = (id) => async (dispatch) => {
-    const currentGameData = await axios.get(currentGameURL(id))
+    try {
+        const currentGameData = await axios.get(currentGameURL(id));
+        dispatch({
+            type: 'fetch-current-game',
+            payload: currentGameData.data
+        });
+    } catch (err) {
+        console.log(err);
+    }
 
-    dispatch({
-        type: 'fetch-current-game',
-        payload: currentGameData.data
-    })
 }
 
 export const loadCurrentScreens = (id) => async (dispatch) => {
-    const currentGameData = await axios.get(currentGameScreensURL(id))
+    try {
+        const currentGameData = await axios.get(currentGameScreensURL(id));
+        dispatch({
+            type: 'fetch-current-game-screens',
+            payload: currentGameData.data
+        });
+    } catch (err) {
+        console.log(err)
+    }
 
-    dispatch({
-        type: 'fetch-current-game-screens',
-        payload: currentGameData.data
-    })
 }
 
 export const loadSearchedGame = (game) => async (dispatch) => {
     dispatch({type: 'fetch-loading', payload: true});
-    const searchedGameData = await axios.get(searchGameURL(game));
 
-    dispatch({
-        type: 'fetch-search-game',
-        payload: searchedGameData.data.results
-    });
+    try {
+        const searchedGameData = await axios.get(searchGameURL(game));
+        dispatch({
+            type: 'fetch-search-game',
+            payload: searchedGameData.data.results
+        });
+    } catch (err) {
+        console.log(err);
+    }
 
     dispatch({type: 'fetch-loading', payload: false});
 }
@@ -79,12 +97,17 @@ export const clearSearchedGame = () => (dispatch) => {
 
 export const loadGamesByPlatform = (platformId, page) => async (dispatch) => {
     dispatch({type: 'fetch-loading', payload: true})
-    const gamesByPlatformData = await axios.get(gamesByPlatformURL(platformId, page))
 
-    dispatch({
-        type: 'fetch-games-by-platform',
-        payload: gamesByPlatformData.data.results
-    })
+    try {
+        const gamesByPlatformData = await axios.get(gamesByPlatformURL(platformId, page));
+        dispatch({
+            type: 'fetch-games-by-platform',
+            payload: gamesByPlatformData.data.results
+        });
+    } catch (err) {
+        console.log(err)
+    }
+
 
     dispatch({type: 'fetch-loading', payload: false})
 }
@@ -98,12 +121,16 @@ export const clearGamesByPlatform = () => (dispatch) => {
 export const loadGamesByGenre = (genre, page) => async (dispatch) => {
     dispatch({type: 'fetch-loading', payload: true});
 
-    const gamesByGenreData = await axios.get(gamesByGenreURL(genre, page));
+    try {
+        const gamesByGenreData = await axios.get(gamesByGenreURL(genre, page));
+        dispatch({
+            type: 'fetch-games-by-genre',
+            payload: gamesByGenreData.data.results
+        });
+    } catch (err) {
+        console.log(err)
+    }
 
-    dispatch({
-        type: 'fetch-games-by-genre',
-        payload: gamesByGenreData.data.results
-    });
 
     dispatch({type: 'fetch-loading', payload: false});
 };
@@ -111,5 +138,26 @@ export const loadGamesByGenre = (genre, page) => async (dispatch) => {
 export const clearGamesGenre = () => (dispatch) => {
     dispatch({
         type: 'clear-games-by-genre'
+    })
+}
+
+export const loadGamesByDate = (to, from, page) => async (dispatch) => {
+    dispatch({type: 'fetch-loading', payload: true});
+    try {
+        const gamesByDateData = await axios.get(gamesByDateURL(to, from, page));
+        dispatch({
+            type: 'fetch-games-by-date',
+            payload: gamesByDateData.data.results
+        })
+    } catch (err) {
+        console.log(err)
+    }
+
+    dispatch({type: 'fetch-loading', payload: false});
+}
+
+export const clearGamesByDate = () => (dispatch) => {
+    dispatch({
+        type: 'clear-games-by-date'
     })
 }

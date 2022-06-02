@@ -7,7 +7,11 @@ import {
     loadPopularGames,
     loadUpcomingGames,
     loadGamesByPlatform,
-    clearGamesByPlatform, loadGamesByGenre, clearGamesGenre
+    clearGamesByPlatform,
+    loadGamesByGenre,
+    clearGamesGenre,
+    loadGamesByDate,
+    clearGamesByDate,
 } from "../../reducers/actions/gamesActions";
 import Loader from "../Loader";
 import {useParams, useLocation} from 'react-router-dom';
@@ -37,8 +41,9 @@ const Games = () => {
         } else if(params.genre) {
             dispatch(clearGamesGenre())
             dispatch(loadGamesByGenre(params.genre, games.genres.page))
-        } else if(params.time) {
-            console.log('time')
+        } else if(params.from && params.to) {
+            dispatch(clearGamesByDate());
+            dispatch(loadGamesByDate(params.to, params.from, games.date.page))
         }
 
         return () => {
@@ -64,8 +69,9 @@ const Games = () => {
                     dispatch(loadGamesByPlatform(platformId, games.platformGames.page))
                 } else if (params.genre) {
                     dispatch(loadGamesByGenre(params.genre, games.genres.page))
+                } else if (params.from && params.to) {
+                    dispatch(loadGamesByDate(params.to, params.from, games.date.page))
                 }
-
             }
 
             let observer = new IntersectionObserver((entities) => {
@@ -141,6 +147,14 @@ const Games = () => {
             }) : null }
 
             {/*  SHOW GAMES BASED ON GENRE   */}
+
+            {/*   SHOW GAMES BASED ON DATE   */}
+
+            { params.from && params.to ? games.date.games.map(game => {
+                return <Game key={game.id} game={game} />
+            }) : null }
+
+            {/*   SHOW GAMES BASED ON DATE   */}
 
             {games.isLoading ? null : <Observer/>}
             {games[showBy].games && <div className="load-more" ref={loader}></div>}
