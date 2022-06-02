@@ -21,7 +21,7 @@ const initState = {
         games: [],
         page: 1
     }
-}
+};
 
 const gamesReducer = (state = initState, action) => {
     switch (action.type) {

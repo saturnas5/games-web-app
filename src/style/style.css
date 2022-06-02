@@ -508,3 +508,46 @@ body {
     padding-top: 7rem; }
   .main__games {
     width: 100%; }
+
+.login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10rem 10rem;
+  color: #ffffff; }
+  .login__login {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-self: center; }
+  .login__title {
+    font-size: 3rem;
+    margin-bottom: 1rem; }
+  .login__login-text {
+    display: inline-block;
+    margin-bottom: 6rem;
+    font-size: 1.6rem; }
+  .login__form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7rem; }
+  .login__register {
+    display: flex;
+    flex-direction: column;
+    justify-self: center; }
+  .login__form-btn {
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .2s; }
+    .login__form-btn:hover {
+      transform: scale(1.08); }
+    .login__form-btn:active {
+      transform: scale(1); }
