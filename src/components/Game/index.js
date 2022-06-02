@@ -1,47 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {
-    FaWindows,
-    FaPlaystation,
-    FaXbox,
-    FaApple,
-    FaGamepad,
-    FaLinux,
-    FaAndroid,
     FaPlus,
     FaListUl
 } from "react-icons/fa";
+import {setPlatforms} from "../../utils/_utils";
 
 
 const Game = ({ game:{ name, released, platforms, background_image, rating, ratings_count, genres, slug, id }  }) => {
-    function setPlatforms(platform) {
-        switch (platform) {
-            case 'playstation3':
-                return <FaPlaystation key='playstation3' className='game__platforms-icon'/>;
-            case 'playstation4':
-                return <FaPlaystation key='playstation4' className='game__platforms-icon'/>;
-            case 'playstation5':
-                return <FaPlaystation key='playstation5' className='game__platforms-icon'/>
-            case 'xbox-one':
-                return <FaXbox key='xbox-one' className='game__platforms-icon'/>;
-            case 'xbox-series-x':
-                return <FaXbox key='xbox-series-x' className='game__platforms-icon'/>;
-            case 'nintendo-switch':
-                return <FaGamepad key='nintendo-switch' className='game__platforms-icon'/>;
-            case 'nintendo-3ds':
-                return <FaGamepad key='nintendo-3ds' className='game__platforms-icon'/>;
-            case 'ios':
-                return <FaApple key='ios' className='game__platforms-icon'/>;
-            case 'macos':
-                return <FaApple key='macos' className='game__platforms-icon'/>;
-            case 'pc':
-                return <FaWindows key='pc' className='game__platforms-icon'/>;
-            case 'linux':
-                return <FaLinux key='linux' className='game__platforms-icon'/>;
-            case 'android':
-                return <FaAndroid key='android' className='game__platforms-icon'/>;
-        }
-    }
 
     return (
         <div className="game">
