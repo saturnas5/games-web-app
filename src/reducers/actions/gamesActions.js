@@ -6,7 +6,8 @@ import {
     currentGameURL,
     currentGameScreensURL,
     searchGameURL,
-    gamesByPlatform, gamesByGenre
+    gamesByPlatformURL,
+    gamesByGenreURL,
 } from "../../api/api";
 import {wait} from "@testing-library/user-event/dist/utils";
 
@@ -78,7 +79,7 @@ export const clearSearchedGame = () => (dispatch) => {
 
 export const loadGamesByPlatform = (platformId, page) => async (dispatch) => {
     dispatch({type: 'fetch-loading', payload: true})
-    const gamesByPlatformData = await axios.get(gamesByPlatform(platformId, page))
+    const gamesByPlatformData = await axios.get(gamesByPlatformURL(platformId, page))
 
     dispatch({
         type: 'fetch-games-by-platform',
@@ -97,7 +98,7 @@ export const clearGamesByPlatform = () => (dispatch) => {
 export const loadGamesByGenre = (genre, page) => async (dispatch) => {
     dispatch({type: 'fetch-loading', payload: true});
 
-    const gamesByGenreData = await axios.get(gamesByGenre(genre, page));
+    const gamesByGenreData = await axios.get(gamesByGenreURL(genre, page));
 
     dispatch({
         type: 'fetch-games-by-genre',

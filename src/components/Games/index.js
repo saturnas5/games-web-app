@@ -37,6 +37,8 @@ const Games = () => {
         } else if(params.genre) {
             dispatch(clearGamesGenre())
             dispatch(loadGamesByGenre(params.genre, games.genres.page))
+        } else if(params.time) {
+            console.log('time')
         }
 
         return () => {

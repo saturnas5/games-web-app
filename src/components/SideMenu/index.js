@@ -1,17 +1,17 @@
 import React from "react";
 import SideMenuButton from "../SideMenuButton";
+import {currentYear, currentDate, lastMonth, currentMonth} from "../../api/api";
+import { getLastWeek, getNextWeek } from "../../utils/_utils";
 
 const SideMenu = () => {
-    const currentYear = new Date().getFullYear();
 
     return (
         <div className="side-menu">
             <div className="side-menu__submenu">
                 <span className="side-menu__submenu-title">New Releases</span>
-                <SideMenuButton icon='calendar' text='Last 30 days' link=''/>
-                <SideMenuButton icon='hot' text='This week' link=''/>
-                <SideMenuButton icon='forward' text='Next week' link=''/>
-                <SideMenuButton icon='release' text='Release calendar' link=''/>
+                <SideMenuButton icon='calendar' text='Last 30 days' link={`/new-releases/${currentDate}/${lastMonth}`}/>
+                <SideMenuButton icon='hot' text='This week' link={`/new-releases/${currentDate}/${getLastWeek()}`}/>
+                <SideMenuButton icon='forward' text='Next week' link={`/new-releases/${currentDate}/${getNextWeek()}`}/>
             </div>
             <div className="side-menu__submenu">
                 <span className="side-menu__submenu-title">Top</span>
