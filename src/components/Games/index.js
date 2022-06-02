@@ -15,6 +15,7 @@ import {
 } from "../../reducers/actions/gamesActions";
 import Loader from "../Loader";
 import {useParams, useLocation} from 'react-router-dom';
+import ScrollTopButton from "../ScrollTopButton";
 
 const Games = () => {
     const dispatch = useDispatch();
@@ -22,9 +23,24 @@ const Games = () => {
     const [showBy, setShowBy] = useState('popular');
     const params = useParams();
     const location = useLocation();
+    const [visible, setVisible] = useState(false);
 
-    console.log('params', params)
-    console.log('location', location)
+    const toggleVisible = () => {
+        const scrolled = document.documentElement.scrollTop;
+        if(scrolled > 300) {
+            setVisible(true)
+        } else if(scrolled <= 300) {
+            setVisible(false)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisible)
+
+        return () => {
+            window.removeEventListener('scroll', toggleVisible);
+        }
+    }, [])
 
     useEffect(() => {
         window.document.title = `Best website for games info | YourWebsiteName.com`
@@ -156,6 +172,7 @@ const Games = () => {
 
             {/*   SHOW GAMES BASED ON DATE   */}
 
+            {visible && <ScrollTopButton/>}
             {games.isLoading ? null : <Observer/>}
             {games[showBy].games && <div className="load-more" ref={loader}></div>}
             {games.isLoading ? <Loader/> : null}

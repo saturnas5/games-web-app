@@ -10,7 +10,6 @@ import {
     gamesByGenreURL,
     gamesByDateURL,
 } from "../../api/api";
-import {wait} from "@testing-library/user-event/dist/utils";
 
 
 export const loadPopularGames = (page) => async (dispatch) => {

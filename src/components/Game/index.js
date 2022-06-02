@@ -16,6 +16,8 @@ import {
 const Game = ({ game:{ name, released, platforms, background_image, rating, ratings_count, genres, slug, id }  }) => {
     function setPlatforms(platform) {
         switch (platform) {
+            case 'playstation3':
+                return <FaPlaystation key='playstation3' className='game__platforms-icon'/>;
             case 'playstation4':
                 return <FaPlaystation key='playstation4' className='game__platforms-icon'/>;
             case 'playstation5':

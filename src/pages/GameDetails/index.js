@@ -52,6 +52,8 @@ const GameDetails = () => {
 
     function setPlatforms(platform) {
         switch (platform) {
+            case 'playstation3':
+                return <FaPlaystation key='playstation3' className='game__platforms-icon'/>;
             case 'playstation4':
                 return <FaPlaystation key='playstation4' className='game__platforms-icon'/>;
             case 'playstation5':

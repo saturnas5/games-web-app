@@ -396,6 +396,24 @@ body {
           object-fit: cover;
           object-position: center; }
 
+.scroll-top-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background-color: black;
+  position: fixed;
+  right: 1%;
+  bottom: 5%;
+  cursor: pointer; }
+  .scroll-top-btn-icon {
+    fill: rgba(255, 255, 255, 0.4);
+    width: 3rem;
+    height: 3rem; }
+
 .game-details {
   padding: 5rem 10rem 10rem 10rem;
   background-size: cover;
