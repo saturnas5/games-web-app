@@ -46,9 +46,9 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
             <Link to={`/game/${slug}/${id}`}>
                 <img src={background_image} alt="" className="game__img"/>
                 <div className="game__platforms">
-                    {/*{platforms.map(platform => {*/}
-                    {/*    return setPlatforms(platform.platform.slug)*/}
-                    {/*})}*/}
+                    {platforms.map(platform => {
+                        return setPlatforms(platform.platform.slug)
+                    })}
                 </div>
                 <h3 className='game__title'>{name}</h3>
             </Link>
