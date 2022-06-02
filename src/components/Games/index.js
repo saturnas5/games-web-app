@@ -12,8 +12,6 @@ const Games = () => {
     const [showBy, setShowBy] = useState('popular');
     const params = useParams();
     const location = useLocation();
-    console.log('params', params)
-    console.log('location', location)
 
     useEffect(() => {
         window.document.title = `Best website for games info | YourWebsiteName.com`
@@ -24,7 +22,7 @@ const Games = () => {
 
         if(location.pathname === '/') {
             dispatch(loadPopularGames(games.popular.page))
-        } else if(params.name === 'playstation') {
+        } else if(params.name) {
             dispatch(loadGamesByPlatform(params.id, games.platformGames.page))
         }
 
@@ -32,18 +30,6 @@ const Games = () => {
             isCancelled = true;
         }
     }, [location, params])
-
-    useEffect(() => {
-        let isCancelled = false;
-
-        // dispatch(loadPopularGames(games.popular.page))
-        // dispatch(loadNewGames())
-        // dispatch(loadUpcomingGames())
-
-        return () => {
-            isCancelled = true;
-        }
-    }, [])
 
 
     // intersection observer
@@ -59,7 +45,7 @@ const Games = () => {
             function loadData(platformId) {
                 if(location.pathname === '/') {
                     dispatch(loadPopularGames(games.popular.page))
-                } else if (params.name === 'playstation') {
+                } else if (params.name) {
                     dispatch(loadGamesByPlatform(platformId, games.platformGames.page))
                 }
 
@@ -95,7 +81,13 @@ const Games = () => {
                 </select>
             </div>
 
+            {/* SHOW GAMES BASED ON SETTINGS */}
+
             { location.pathname === '/' ? games[showBy].games.map(game => {
+                return <Game key={game.id} game={game} />
+            }) : null }
+
+            { params.name === 'pc' ? games.platformGames.games.map(game => {
                 return <Game key={game.id} game={game} />
             }) : null }
 
@@ -103,9 +95,24 @@ const Games = () => {
                 return <Game key={game.id} game={game} />
             }) : null }
 
-            {/*{games[showBy].games.map(game => {*/}
-            {/*    return <Game key={game.id} game={game} />*/}
-            {/*})}*/}
+            { params.name === 'xbox' ? games.platformGames.games.map(game => {
+                return <Game key={game.id} game={game} />
+            }) : null }
+
+            { params.name === 'nintendo' ? games.platformGames.games.map(game => {
+                return <Game key={game.id} game={game} />
+            }) : null }
+
+            { params.name === 'ios' ? games.platformGames.games.map(game => {
+                return <Game key={game.id} game={game} />
+            }) : null }
+
+            { params.name === 'android' ? games.platformGames.games.map(game => {
+                return <Game key={game.id} game={game} />
+            }) : null }
+
+            {/* SHOW GAMES BASED ON SETTINGS */}
+
             {games.isLoading ? null : <Observer/>}
             {games[showBy].games && <div className="load-more" ref={loader}></div>}
             {games.isLoading ? <Loader/> : null}

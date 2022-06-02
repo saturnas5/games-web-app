@@ -26,9 +26,13 @@ const GameDetails = () => {
     const [mainImage, setMainImage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        window.document.title = `${currentGame.name} | YourWebsiteName.com`
-    }, [])
+    function HandleTitleChange() {
+        useEffect(() => {
+            window.document.title = `${currentGame.name} | YourWebsiteName.com`
+        }, [])
+        return null;
+    }
+
 
     useEffect(() => {
         setMainImage(currentGame.background_image_additional || currentGame.background_image)
@@ -118,6 +122,7 @@ const GameDetails = () => {
                 </div>
             </div>
             <ScrollToTop/>
+            <HandleTitleChange/>
         </div>
     );
 };
