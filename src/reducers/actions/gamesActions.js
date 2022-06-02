@@ -86,3 +86,9 @@ export const loadGamesByPlatform = (platformId, page) => async (dispatch) => {
 
     dispatch({type: 'fetch-loading', payload: false})
 }
+
+export const clearGamesByPlatform = () => (dispatch) => {
+    dispatch({
+        type: 'clear-games-by-platform'
+    })
+}

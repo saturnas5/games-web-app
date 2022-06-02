@@ -35,6 +35,8 @@ const gamesReducer = (state = initState, action) => {
             return {...state, searched: []}
         case 'fetch-games-by-platform':
             return {...state, platformGames: {...state.platformGames, games: [...state.platformGames.games, ...action.payload], page: state.platformGames.page + 1}}
+        case 'clear-games-by-platform':
+            return {...state, platformGames: {...state.platformGames, games: []}, page: 1}
         default:
             return state;
     }

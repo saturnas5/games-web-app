@@ -2,7 +2,13 @@ import React, {useState, useRef, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Game from "../Game";
 import ScrollToTop from "../ScrollToTop";
-import {loadNewGames, loadPopularGames, loadUpcomingGames, loadGamesByPlatform} from "../../reducers/actions/gamesActions";
+import {
+    loadNewGames,
+    loadPopularGames,
+    loadUpcomingGames,
+    loadGamesByPlatform ,
+    clearGamesByPlatform
+} from "../../reducers/actions/gamesActions";
 import Loader from "../Loader";
 import {useParams, useLocation} from 'react-router-dom';
 
@@ -23,7 +29,8 @@ const Games = () => {
         if(location.pathname === '/') {
             dispatch(loadPopularGames(games.popular.page))
         } else if(params.name) {
-            dispatch(loadGamesByPlatform(params.id, games.platformGames.page))
+            dispatch(clearGamesByPlatform());
+            dispatch(loadGamesByPlatform(params.id, games.platformGames.page));
         }
 
         return () => {
