@@ -12,6 +12,10 @@ const initState = {
     platformGames: {
         games: [],
         page: 1
+    },
+    genres : {
+        games: [],
+        page: 1
     }
 }
 
@@ -37,6 +41,10 @@ const gamesReducer = (state = initState, action) => {
             return {...state, platformGames: {...state.platformGames, games: [...state.platformGames.games, ...action.payload], page: state.platformGames.page + 1}}
         case 'clear-games-by-platform':
             return {...state, platformGames: {...state.platformGames, games: []}, page: 1}
+        case 'fetch-games-by-genre':
+            return {...state, genres: {...state.genres, games: [...state.genres.games, ...action.payload], page: state.genres.page + 1}}
+        case 'clear-games-by-genre':
+            return {...state, genres: {...state.genres, games: []}, page: 1}
         default:
             return state;
     }

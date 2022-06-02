@@ -6,8 +6,8 @@ import {
     loadNewGames,
     loadPopularGames,
     loadUpcomingGames,
-    loadGamesByPlatform ,
-    clearGamesByPlatform
+    loadGamesByPlatform,
+    clearGamesByPlatform, loadGamesByGenre, clearGamesGenre
 } from "../../reducers/actions/gamesActions";
 import Loader from "../Loader";
 import {useParams, useLocation} from 'react-router-dom';
@@ -18,6 +18,9 @@ const Games = () => {
     const [showBy, setShowBy] = useState('popular');
     const params = useParams();
     const location = useLocation();
+
+    console.log('params', params)
+    console.log('location', location)
 
     useEffect(() => {
         window.document.title = `Best website for games info | YourWebsiteName.com`
@@ -31,6 +34,9 @@ const Games = () => {
         } else if(params.name) {
             dispatch(clearGamesByPlatform());
             dispatch(loadGamesByPlatform(params.id, games.platformGames.page));
+        } else if(params.genre) {
+            dispatch(clearGamesGenre())
+            dispatch(loadGamesByGenre(params.genre, games.genres.page))
         }
 
         return () => {
@@ -54,6 +60,8 @@ const Games = () => {
                     dispatch(loadPopularGames(games.popular.page))
                 } else if (params.name) {
                     dispatch(loadGamesByPlatform(platformId, games.platformGames.page))
+                } else if (params.genre) {
+                    dispatch(loadGamesByGenre(params.genre, games.genres.page))
                 }
 
             }
@@ -88,11 +96,15 @@ const Games = () => {
                 </select>
             </div>
 
-            {/* SHOW GAMES BASED ON SETTINGS */}
+            {/*    SHOW GAMES MAIN PAGE      */}
 
             { location.pathname === '/' ? games[showBy].games.map(game => {
                 return <Game key={game.id} game={game} />
             }) : null }
+
+            {/*    SHOW GAMES MAIN PAGE      */}
+
+            {/* SHOW GAMES BASED ON PLATFORM */}
 
             { params.name === 'pc' ? games.platformGames.games.map(game => {
                 return <Game key={game.id} game={game} />
@@ -118,7 +130,15 @@ const Games = () => {
                 return <Game key={game.id} game={game} />
             }) : null }
 
-            {/* SHOW GAMES BASED ON SETTINGS */}
+            {/* SHOW GAMES BASED ON PLATFORM */}
+
+            {/*  SHOW GAMES BASED ON GENRE   */}
+
+            { params.genre ? games.genres.games.map(game => {
+                return <Game key={game.id} game={game} />
+            }) : null }
+
+            {/*  SHOW GAMES BASED ON GENRE   */}
 
             {games.isLoading ? null : <Observer/>}
             {games[showBy].games && <div className="load-more" ref={loader}></div>}
