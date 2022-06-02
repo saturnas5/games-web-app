@@ -12,7 +12,7 @@ function App() {
     <div className="App">
         <Header/>
         <Switch>
-            <Route exact path='/'>
+            <Route exact path={['/', '/games/platforms/:name/:id']}>
                 <Main/>
             </Route>
             <Route path='/game/:slug/:id'>

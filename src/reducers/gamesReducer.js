@@ -8,7 +8,11 @@ const initState = {
     currentGame: {},
     currentGameScreens: {},
     searched: [],
-    isLoading: false
+    isLoading: false,
+    platformGames: {
+        games: [],
+        page: 1
+    }
 }
 
 const gamesReducer = (state = initState, action) => {
@@ -29,6 +33,8 @@ const gamesReducer = (state = initState, action) => {
             return {...state, searched: action.payload}
         case 'clear-search-game':
             return {...state, searched: []}
+        case 'fetch-games-by-platform':
+            return {...state, platformGames: {...state.platformGames, games: [...state.platformGames.games, ...action.payload], page: state.platformGames.page + 1}}
         default:
             return state;
     }

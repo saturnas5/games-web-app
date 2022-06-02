@@ -1,5 +1,13 @@
 import axios from "axios";
-import {popularGamesURL, upcomingGamesURL, newGamesURL, currentGameURL, currentGameScreensURL, searchGameURL } from "../../api/api";
+import {
+    popularGamesURL,
+    upcomingGamesURL,
+    newGamesURL,
+    currentGameURL,
+    currentGameScreensURL,
+    searchGameURL,
+    gamesByPlatform
+} from "../../api/api";
 
 
 export const loadPopularGames = (page) => async (dispatch) => {
@@ -50,17 +58,31 @@ export const loadCurrentScreens = (id) => async (dispatch) => {
 }
 
 export const loadSearchedGame = (game) => async (dispatch) => {
-    dispatch({type: 'fetch-loading', payload: true})
+    dispatch({type: 'fetch-loading', payload: true});
     const searchedGameData = await axios.get(searchGameURL(game));
 
     dispatch({
         type: 'fetch-search-game',
         payload: searchedGameData.data.results
-    })
+    });
+
+    dispatch({type: 'fetch-loading', payload: false});
 }
 
 export const clearSearchedGame = () => (dispatch) => {
     dispatch({
         type: 'clear-search-game'
     })
+}
+
+export const loadGamesByPlatform = (platformId, page) => async (dispatch) => {
+    dispatch({type: 'fetch-loading', payload: true})
+    const gamesByPlatformData = await axios.get(gamesByPlatform(platformId, page))
+
+    dispatch({
+        type: 'fetch-games-by-platform',
+        payload: gamesByPlatformData.data.results
+    })
+
+    dispatch({type: 'fetch-loading', payload: false})
 }

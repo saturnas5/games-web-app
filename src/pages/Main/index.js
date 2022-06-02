@@ -1,6 +1,7 @@
 import React from "react";
 import SideMenu from "../../components/SideMenu";
 import Games from "../../components/Games";
+import {Switch, Route} from 'react-router-dom';
 
 const Main = () => {
 

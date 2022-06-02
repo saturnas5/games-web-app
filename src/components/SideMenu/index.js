@@ -22,7 +22,7 @@ const SideMenu = () => {
             <div className="side-menu__submenu">
                 <span className="side-menu__submenu-title">Platforms</span>
                 <SideMenuButton icon='pc' text='PC' link=''/>
-                <SideMenuButton icon='playstation' text='Playstation' link=''/>
+                <SideMenuButton icon='playstation' text='Playstation' link='/games/platforms/playstation/18'/>
                 <SideMenuButton icon='xbox' text='Xbox' link=''/>
                 <SideMenuButton icon='nintendo' text='Nintendo' link=''/>
                 <SideMenuButton icon='ios' text='iOS' link=''/>
