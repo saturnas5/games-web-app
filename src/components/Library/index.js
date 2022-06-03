@@ -22,11 +22,11 @@ const Library = () => {
                 </div>
             </div>
             <div className="library__games-list">
-                <LibraryList label='Uncategorized'/>
-                <LibraryList label='Currently playing'/>
-                <LibraryList label='Completed'/>
-                <LibraryList label='Played'/>
-                <LibraryList label='Want Play'/>
+                <LibraryList icon='thumb' label='Uncategorized' library='uncategorized'/>
+                <LibraryList icon='game' label='Currently playing' library='playing'/>
+                <LibraryList icon='completed' label='Completed' library='completed'/>
+                <LibraryList icon='played' label='Played' library='played'/>
+                <LibraryList icon='wanted' label='Want Play' library='wantPlay'/>
             </div>
         </div>
     );

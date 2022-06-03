@@ -29,6 +29,26 @@ const userReducer = (state = initState, action) => {
             return {...state, isLoggedIn: true, token: action.payload}
         case 'user-logout':
             return {...state, isLoggedIn: false, token: null}
+        case 'remove-from-uncategorized-library':
+            return {...state, library: {...state.library, uncategorized: state.library.uncategorized.filter(game => game.id !== action.payload.id)}}
+        case 'remove-from-playing-library':
+            return {...state, library: {...state.library, playing: state.library.playing.filter(game => game.id !== action.payload.id)}}
+        case 'remove-from-completed-library':
+            return {...state, library: {...state.library, completed: state.library.completed.filter(game => game.id !== action.payload.id)}}
+        case 'remove-from-played-library':
+            return {...state, library: {...state.library, played: state.library.played.filter(game => game.id !== action.payload.id)}}
+        case 'remove-from-wanted-library':
+            return {...state, library: {...state.library, wantPlay: state.library.wantPlay.filter(game => game.id !== action.payload.id)}}
+        case 'add-game-to-library':
+            return {...state, library: {...state.library, uncategorized: [...state.library.uncategorized, action.payload]}}
+        case 'add-game-to-playing-library':
+            return {...state, library: {...state.library, playing: [...state.library.playing, action.payload]}}
+        case 'add-game-to-completed-library':
+            return {...state, library: {...state.library, completed: [...state.library.completed, action.payload]}}
+        case 'add-game-to-played-library':
+            return {...state, library: {...state.library, played: [...state.library.played, action.payload]}}
+        case 'add-game-to-wanted-library':
+            return {...state, library: {...state.library, wantPlay: [...state.library.wantPlay, action.payload]}}
         default:
             return state;
     };

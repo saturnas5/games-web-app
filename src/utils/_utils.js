@@ -1,5 +1,14 @@
 import {FaAndroid, FaApple, FaGamepad, FaLinux, FaPlaystation, FaWindows, FaXbox} from "react-icons/fa";
 import React from "react";
+import {
+    addGameToCompletedLibrary, addGameToPlayedLibrary,
+    addGameToPlayingLibrary, addGameToWantPlayLibrary,
+    removeGameFromCompletedLibrary,
+    removeGameFromPlayedLibrary, removeGameFromPlayingLibrary,
+    removeGameFromUncategorizedLibrary, removeGameFromWantedLibrary
+} from "../reducers/actions/userActions";
+
+import {useDispatch, useSelector} from "react-redux";
 
 export const getLastWeek = () => {
     let today = new Date();
@@ -69,3 +78,4 @@ export const setPlatforms = (platform) => {
             return <FaAndroid key='android' className='game__platforms-icon'/>;
     }
 }
+

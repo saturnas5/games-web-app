@@ -55,8 +55,11 @@
   }
 
   &__results-box {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 1rem;
+    grid-row-gap: 4rem;
     height: 0;
-    background-color: chocolate;
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
@@ -64,7 +67,8 @@
   }
 
   &__results-box.open {
-    height: 20rem;
+    padding-top: 3rem;
+    height: auto;
     opacity: 1;
     visibility: visible;
   }

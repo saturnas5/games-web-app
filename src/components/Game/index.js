@@ -1,14 +1,21 @@
 import React, {useState} from "react";
+import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 import {
     FaPlus,
     FaListUl
 } from "react-icons/fa";
 import {setPlatforms} from "../../utils/_utils";
+import {addGameToLibrary} from "../../reducers/actions/userActions";
 
 
-const Game = ({ game:{ name, released, platforms, background_image, rating, ratings_count, genres, slug, id }  }) => {
+const Game = ({ game:{ name, released, platforms, background_image, rating, ratings_count, genres, slug, id }, game  }) => {
+    const dispatch = useDispatch();
     const [libraryBox, setLibraryBox] = useState(false);
+
+    const handleGameAddLibrary = (game) => {
+        dispatch(addGameToLibrary(game))
+    }
 
     return (
         <div className="game">
@@ -22,10 +29,7 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
                 <h3 className='game__title'>{name}</h3>
             </Link>
                 <div className="game__cta">
-                    <button onClick={() => setLibraryBox(!libraryBox)} className="game__cta-btn"><FaPlus className="game__cta-btn-icon"/><span>Library</span></button>
-                    <div className="game__cta-library">
-
-                    </div>
+                    <button onClick={() => handleGameAddLibrary(game)} className="game__cta-btn"><FaPlus className="game__cta-btn-icon"/><span>Library</span></button>
                     <button className="game__cta-btn"><span>Rate</span></button>
                     <button className="game__cta-btn"><FaListUl className="game__cta-btn-icon"/><span>Wish list</span></button>
                 </div>
