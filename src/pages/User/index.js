@@ -3,6 +3,7 @@ import SideMenu from "../../components/SideMenu";
 import {useSelector} from "react-redux";
 import defaultPhoto from '../../img/default-user.png'
 import {NavLink, Link, Switch, Route, useRouteMatch} from "react-router-dom";
+import Library from "../../components/Library";
 
 const User = () => {
     const user = useSelector(state => state.user);
@@ -47,7 +48,7 @@ const User = () => {
                             <h1>Overview</h1>
                         </Route>
                         <Route exact path={`${match.path}/library`}>
-                            <h1>Library</h1>
+                            <Library/>
                         </Route>
                         <Route exact path={`${match.path}/wishlist`}>
                             <h1>Wishlist</h1>

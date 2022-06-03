@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {
     FaPlus,
@@ -8,6 +8,7 @@ import {setPlatforms} from "../../utils/_utils";
 
 
 const Game = ({ game:{ name, released, platforms, background_image, rating, ratings_count, genres, slug, id }  }) => {
+    const [libraryBox, setLibraryBox] = useState(false);
 
     return (
         <div className="game">
@@ -21,7 +22,10 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
                 <h3 className='game__title'>{name}</h3>
             </Link>
                 <div className="game__cta">
-                    <button className="game__cta-btn"><FaPlus className="game__cta-btn-icon"/><span>Library</span></button>
+                    <button onClick={() => setLibraryBox(!libraryBox)} className="game__cta-btn"><FaPlus className="game__cta-btn-icon"/><span>Library</span></button>
+                    <div className="game__cta-library">
+
+                    </div>
                     <button className="game__cta-btn"><span>Rate</span></button>
                     <button className="game__cta-btn"><FaListUl className="game__cta-btn-icon"/><span>Wish list</span></button>
                 </div>

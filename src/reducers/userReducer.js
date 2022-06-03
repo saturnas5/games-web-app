@@ -4,10 +4,11 @@ const initState = {
     token: null,
     wishList: [],
     library: {
-        liked: [],
-        disliked: [],
+        uncategorized: [],
+        playing: [],
+        completed: [],
         played: [],
-        wantToPlay: []
+        wantPlay: []
     },
     messages: [],
     settings: {
