@@ -11,9 +11,9 @@ const GameDetails = () => {
     const {currentGame, currentGameScreens} = useSelector(state => state.games);
     const { id } = useParams();
     const match = useRouteMatch();
-
     const [mainImage, setMainImage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [someState, setSomeState] = useState('')
 
     function HandleTitleChange() {
         useEffect(() => {
@@ -21,7 +21,6 @@ const GameDetails = () => {
         }, [])
         return null;
     }
-
 
     useEffect(() => {
         setMainImage(currentGame.background_image_additional || currentGame.background_image)
@@ -31,7 +30,7 @@ const GameDetails = () => {
         test()
         dispatch(loadCurrentGame(id))
         dispatch(loadCurrentScreens(id))
-    }, [id, match])
+    }, [id, match, dispatch])
 
     function test() {
         setTimeout(() => {

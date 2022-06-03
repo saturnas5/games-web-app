@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import GameDetails from "./pages/GameDetails";
 import Login from "./pages/Login";
 import User from "./pages/User";
+import Settings from "./pages/Settings";
 
 function App() {
     const user = useSelector(state => state.user);
@@ -33,8 +34,11 @@ function App() {
             <Route exact path='/login'>
                 <Login/>
             </Route>
-            <Route exact path='/user'>
+            <Route path='/user'>
                 <User/>
+            </Route>
+            <Route exact path='/user/settings'>
+                <Settings/>
             </Route>
         </Switch>
         <Footer/>

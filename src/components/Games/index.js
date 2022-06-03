@@ -25,6 +25,8 @@ const Games = () => {
     const location = useLocation();
     const [visible, setVisible] = useState(false);
 
+    const firstRenderRef = useRef(false)
+
     const toggleVisible = () => {
         const scrolled = document.documentElement.scrollTop;
         if(scrolled > 300) {
@@ -49,8 +51,9 @@ const Games = () => {
     useEffect(() => {
         let isCancelled = false;
 
-        if(location.pathname === '/') {
+        if(location.pathname === '/' && !firstRenderRef.current) {
             dispatch(loadPopularGames(games.popular.page))
+            firstRenderRef.current = true;
         } else if(params.name) {
             dispatch(clearGamesByPlatform());
             dispatch(loadGamesByPlatform(params.id, games.platformGames.page));

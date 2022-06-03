@@ -47,7 +47,7 @@ const Header = () => {
             {user.token ? <nav className="header__user-nav">
                 <ul className="header__user-nav-list">
                     <li className="header__user-nav-item">
-                        <Link to='/'><img src={userImg} alt="User photo" className="header__user-nav-item-img"/></Link>
+                        <Link to='/user'><img src={userImg} alt="User photo" className="header__user-nav-item-img"/></Link>
                     </li>
                     <li className="header__user-nav-item">
                         <Link to='/'><span>My library</span></Link>
@@ -61,7 +61,7 @@ const Header = () => {
                     <li className="header__user-nav-item">
                         <FaEllipsisH onClick={() => setActive(!active)} className='header__user-nav-icon'/>
                         <div className={`header__user-nav-item-settings ${active ? 'active' : ''}`}>
-                            <Link className="header__user-nav-item-settings-link" to='/'>Settings</Link>
+                            <Link className="header__user-nav-item-settings-link" to='/user'>Settings</Link>
                             <Link className="header__user-nav-item-settings-link" to='/'>Settings</Link>
                             <Link className="header__user-nav-item-settings-link" to='/'>Settings</Link>
                             <Link className="header__user-nav-item-settings-link" to='/'>Settings</Link>

@@ -556,6 +556,81 @@ body {
   .main__games {
     width: 100%; }
 
+.user {
+  display: grid;
+  grid-template-columns: 25rem 1fr;
+  padding: 5rem 10rem 15rem 10rem; }
+  .user__main-info {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 0 10rem; }
+  .user__title {
+    color: #ffffff;
+    font-size: 5rem; }
+  .user__profile-img {
+    width: 10rem;
+    height: 10rem;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%; }
+  .user__settings-btn:link, .user__settings-btn:visited {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 500;
+    background-color: #515351;
+    border: 2px solid #ffffff;
+    padding: 1rem 2rem;
+    margin-left: auto;
+    transition: all .2s; }
+    .user__settings-btn:link:hover, .user__settings-btn:visited:hover {
+      background-color: #333633;
+      border: 2px solid #515351; }
+    .user__settings-btn:link:active, .user__settings-btn:visited:active {
+      transform: scale(0.9); }
+  .user__nav {
+    padding: 5rem 10rem 0 10rem; }
+  .user__nav-list {
+    list-style: none;
+    display: flex;
+    gap: 4rem; }
+  .user__nav-item-link:link, .user__nav-item-link:visited {
+    text-decoration: none;
+    color: #898c89;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: all .2s; }
+    .user__nav-item-link:link::after, .user__nav-item-link:visited::after {
+      content: '';
+      display: block;
+      margin-top: 2px;
+      width: 100%;
+      height: 2px;
+      background-color: #ffffff;
+      transition: all .3s;
+      transform: scale(0); }
+    .user__nav-item-link:link:hover, .user__nav-item-link:visited:hover {
+      color: #ffffff; }
+    .user__nav-item-link:link:hover::after, .user__nav-item-link:visited:hover::after {
+      transform: scale(1); }
+  .user__nav-item-link-active {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: all .2s; }
+    .user__nav-item-link-active::after {
+      content: '';
+      display: block;
+      margin-top: 2px;
+      width: 100%;
+      height: 2px;
+      background-color: #ffffff;
+      transition: all .3s; }
+  .user__display-box {
+    padding: 5rem 10rem 0 10rem; }
+
 .login {
   display: grid;
   grid-template-columns: 1fr 1fr;
