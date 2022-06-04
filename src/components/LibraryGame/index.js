@@ -20,7 +20,7 @@ const LibraryGame = ({ game }) => {
     const user = useSelector(state => state.user);
     const [platform, setPlatform] = useState('');
 
-    function handleRemoveDispatch(existingLib, game) {
+    const handleRemoveDispatch = (existingLib, game) => {
         switch (existingLib) {
             case 'uncategorized':
                 return removeGameFromUncategorizedLibrary(game);

@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import React, {useState, useEffect, useRef} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {
     FaPlus,
@@ -11,10 +11,28 @@ import {addGameToLibrary} from "../../reducers/actions/userActions";
 
 const Game = ({ game:{ name, released, platforms, background_image, rating, ratings_count, genres, slug, id }, game  }) => {
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
     const [libraryBox, setLibraryBox] = useState(false);
+    const [inLibrary, setInLibrary] = useState(false);
+
+    useEffect(() => {
+        handleGameCheckForLibrary(game)
+    }, [inLibrary])
+
+    const handleGameCheckForLibrary = (game) => {
+        let inUncategorized = user.library.uncategorized.find(item => item.id === game.id);
+        let inPlaying = user.library.playing.find(item => item.id === game.id);
+        let inCompleted = user.library.completed.find(item => item.id === game.id);
+        let inPlayed = user.library.played.find(item => item.id === game.id);
+        let inWantPlay = user.library.wantPlay.find(item => item.id === game.id);
+        if(inUncategorized || inPlaying || inCompleted || inPlayed || inWantPlay) {
+            setInLibrary(true)
+        }
+    }
 
     const handleGameAddLibrary = (game) => {
         dispatch(addGameToLibrary(game))
+        setInLibrary(true);
     }
 
     return (
@@ -29,7 +47,13 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
                 <h3 className='game__title'>{name}</h3>
             </Link>
                 <div className="game__cta">
-                    <button onClick={() => handleGameAddLibrary(game)} className="game__cta-btn"><FaPlus className="game__cta-btn-icon"/><span>Library</span></button>
+                    <button
+                        onClick={() => handleGameAddLibrary(game)}
+                        className={`game__cta-btn ${inLibrary ? 'active' : ''}`}
+                    >
+                        <FaPlus className={`game__cta-btn-icon ${inLibrary ? 'active' : ''}`}/>
+                        <span>{inLibrary ? `Added` : `Library`}</span>
+                    </button>
                     <button className="game__cta-btn"><span>Rate</span></button>
                     <button className="game__cta-btn"><FaListUl className="game__cta-btn-icon"/><span>Wish list</span></button>
                 </div>

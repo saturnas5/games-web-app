@@ -226,6 +226,12 @@ $breakpoint arguement choices:
       font-family: inherit;
       font-weight: 500;
       transition: all .2s; }
+      .game__cta-btn.active {
+        background-color: forestgreen; }
+        .game__cta-btn.active:hover {
+          background-color: forestgreen; }
+          .game__cta-btn.active:hover span {
+            color: #ffffff; }
       @media only screen and (max-width: 106.25em) {
         .game__cta-btn {
           padding: .5rem .5rem; } }
@@ -240,6 +246,10 @@ $breakpoint arguement choices:
       .game__cta-btn-icon {
         fill: #ffffff;
         transition: all .2s; }
+        .game__cta-btn-icon.active {
+          opacity: 0;
+          visibility: hidden;
+          display: none; }
       .game__cta-btn:hover {
         background-color: #ffffff;
         cursor: pointer; }
@@ -457,7 +467,9 @@ $breakpoint arguement choices:
     .side-menu {
       background-color: #515351;
       width: 50%;
-      padding: 3rem; } }
+      padding: 3rem;
+      height: 55rem;
+      overflow-y: scroll; } }
   .side-menu__submenu {
     display: flex;
     flex-direction: column;
@@ -1004,7 +1016,7 @@ $breakpoint arguement choices:
         position: fixed;
         grid-row: 1 / 2;
         z-index: 1000;
-        top: 3rem;
+        top: 2rem;
         transform: translateX(-52%);
         transition: all .3s; }
         .main__menu.open {

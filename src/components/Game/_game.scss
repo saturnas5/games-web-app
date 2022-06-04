@@ -80,6 +80,18 @@
       font-weight: 500;
       transition: all .2s;
 
+      &.active {
+        background-color: forestgreen;
+
+        &:hover {
+          background-color: forestgreen;
+
+          span {
+            color: #ffffff;
+          }
+        }
+      }
+
       @include respond(normal) {
         padding: .5rem .5rem;
       }
@@ -97,6 +109,12 @@
       &-icon {
         fill: #ffffff;
         transition: all .2s;
+
+        &.active {
+          opacity: 0;
+          visibility: hidden;
+          display: none;
+        }
       }
 
       &:hover {

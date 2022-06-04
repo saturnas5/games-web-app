@@ -78,7 +78,7 @@ const Games = () => {
             let options = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 1
+                threshold: .8
             };
             function loadData(platformId) {
                 if(location.pathname === '/') {
