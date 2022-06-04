@@ -46,7 +46,10 @@
         padding: 1.5rem;
         position: fixed;
         top: 7rem;
-        right: 20rem;
+        right: 42%;
+      }
+      @include respond(smallest-phone) {
+        right: 40%;
       }
     }
 

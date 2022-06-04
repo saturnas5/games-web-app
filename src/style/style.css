@@ -53,6 +53,11 @@ $breakpoint arguement choices:
     .footer {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: 1fr 1fr; } }
+  @media only screen and (max-width: 25em) {
+    .footer {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      padding: 2rem 1rem; } }
   .footer__logo {
     width: auto;
     height: 7rem;
@@ -68,6 +73,11 @@ $breakpoint arguement choices:
       .footer__social {
         grid-column: 1 / 2;
         grid-row: 1 / 2; } }
+    @media only screen and (max-width: 25em) {
+      .footer__social {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        gap: 1rem; } }
     .footer__social-box {
       display: flex;
       gap: 3rem;
@@ -93,11 +103,18 @@ $breakpoint arguement choices:
       .footer__newsletter {
         grid-column: 1 / -1;
         grid-row: 2 / -1; } }
+    @media only screen and (max-width: 25em) {
+      .footer__newsletter {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3; } }
     .footer__newsletter-title {
       color: #ffffff;
       text-transform: uppercase;
       font-size: 1.6rem;
       margin-bottom: 10rem; }
+      @media only screen and (max-width: 25em) {
+        .footer__newsletter-title {
+          margin-bottom: 5rem; } }
     .footer__newsletter-form {
       display: flex;
       flex-direction: column;
@@ -127,11 +144,21 @@ $breakpoint arguement choices:
       .footer__terms {
         grid-column: 2 / 3;
         grid-row: 1 / 2; } }
+    @media only screen and (max-width: 25em) {
+      .footer__terms {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4; } }
     .footer__terms-list {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 4rem; }
+      @media only screen and (max-width: 25em) {
+        .footer__terms-list {
+          flex-direction: unset;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem; } }
     .footer__terms-link:link, .footer__terms-link:visited {
       text-decoration: none;
       color: #ffffff;
@@ -291,6 +318,14 @@ $breakpoint arguement choices:
   @media only screen and (max-width: 56.25em) {
     .header {
       padding: 5rem 2rem; } }
+  @media only screen and (max-width: 31.25em) {
+    .header {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-row-gap: 2rem; } }
+  @media only screen and (max-width: 31.25em) {
+    .header__logo {
+      grid-row: 1 / 2; } }
   .header__logo-img {
     width: auto;
     height: 3rem;
@@ -298,6 +333,9 @@ $breakpoint arguement choices:
     display: block; }
   .header__user-nav {
     white-space: nowrap; }
+    @media only screen and (max-width: 31.25em) {
+      .header__user-nav {
+        grid-row: 1 / 2; } }
     .header__user-nav-list {
       display: flex;
       align-items: center;
@@ -364,6 +402,11 @@ $breakpoint arguement choices:
     max-width: 18%;
     display: flex;
     justify-content: flex-end; }
+    @media only screen and (max-width: 31.25em) {
+      .header__login-box {
+        grid-row: 1 / 2;
+        display: block;
+        justify-self: center; } }
   .header__login-link {
     text-decoration: none;
     color: #ffffff;
@@ -444,6 +487,10 @@ $breakpoint arguement choices:
   @media only screen and (max-width: 31.25em) {
     .games {
       grid-template-columns: repeat(2, minmax(20rem, 1fr)); } }
+  @media only screen and (max-width: 25em) {
+    .games {
+      grid-template-columns: minmax(20rem, 1fr);
+      padding: 0 5rem; } }
   .games__sort {
     grid-row: 1 / 2;
     grid-column: 1 / -1; }
@@ -510,6 +557,10 @@ $breakpoint arguement choices:
   display: flex;
   justify-content: center;
   position: relative; }
+  @media only screen and (max-width: 31.25em) {
+    .header__search {
+      grid-row: 2 / 3;
+      grid-column: 1 / 3; } }
   .header__search-input {
     width: 70%;
     padding: 1.5rem 4rem;
@@ -916,7 +967,10 @@ $breakpoint arguement choices:
           padding: 1.5rem;
           position: fixed;
           top: 7rem;
-          right: 20rem; } }
+          right: 42%; } }
+      @media only screen and (max-width: 25em) {
+        .main__menu-mobile-icon-box {
+          right: 40%; } }
     .main__menu-mobile-icon {
       fill: #ffffff;
       width: 2rem;

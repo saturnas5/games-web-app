@@ -14,6 +14,11 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr 1fr;
   }
+  @include respond(smallest-phone) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    padding: 2rem 1rem;
+  }
 
   &__logo {
     width: auto;
@@ -32,6 +37,11 @@
     @include respond(phone) {
       grid-column: 1 / 2;
       grid-row: 1 / 2;
+    }
+    @include respond(smallest-phone) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      gap: 1rem;
     }
 
     &-box {
@@ -67,12 +77,20 @@
       grid-column: 1 / -1;
       grid-row: 2 / -1;
     }
+    @include respond(smallest-phone) {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
 
     &-title {
       color: #ffffff;
       text-transform: uppercase;
       font-size: 1.6rem;
       margin-bottom: 10rem;
+
+      @include respond(smallest-phone) {
+        margin-bottom: 5rem;
+      }
     }
 
     &-form {
@@ -115,12 +133,23 @@
       grid-column: 2 / 3;
       grid-row: 1 / 2;
     }
+    @include respond(smallest-phone) {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
 
     &-list {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 4rem;
+
+      @include respond(smallest-phone) {
+        flex-direction: unset;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
     }
 
     &-item {
