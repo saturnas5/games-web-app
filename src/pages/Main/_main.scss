@@ -15,17 +15,55 @@
     grid-template-columns: 25rem 1fr;
   }
   @include respond(small-phone) {
-    grid-template-columns: 17rem 1fr;
+    grid-template-columns: 1fr;
+    position: relative;
   }
 
   &__menu {
     width: 100%;
     height: 50vh;
     padding-top: 7rem;
+    position: relative;
+
+    @include respond(small-phone) {
+      position: fixed;
+      grid-row: 1 / 2;
+      z-index: 1000;
+      top: 3rem;
+      transform: translateX(-52%);
+      transition: all .3s;
+
+      &.open {
+        transform: translateX(-2%);
+      }
+    }
+
+    &-mobile-icon-box {
+      display: none;
+      @include respond(small-phone) {
+        display: block;
+        background-color: #515351;
+        padding: 1.5rem;
+        position: fixed;
+        top: 7rem;
+        right: 20rem;
+      }
+    }
+
+    &-mobile-icon {
+      fill: #ffffff;
+      width: 2rem;
+      height: 2rem;
+    }
+
   }
 
   &__games {
 
     width: 100%;
+
+    @include respond(small-phone) {
+      grid-row: 1 / 2;
+    }
   }
 }

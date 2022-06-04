@@ -20,6 +20,9 @@
   @include respond(phone) {
     grid-template-columns: minmax(20rem, 35rem);
   }
+  @include respond(small-phone) {
+    grid-template-columns: repeat(2, minmax(20rem, 1fr));
+  }
 
   &__sort {
     grid-row: 1 / 2;
