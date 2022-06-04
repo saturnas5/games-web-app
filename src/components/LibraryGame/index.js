@@ -20,47 +20,45 @@ const LibraryGame = ({ game }) => {
     const user = useSelector(state => state.user);
     const [platform, setPlatform] = useState('');
 
-    console.log(platform)
-
-    // Reikes perrasyti funkcija, kad nereiketu atlikti nereikalingu veiksmu.
-    const handleGameAddingToLibrary = (library, game) => {
-        let existingGame = user.library[library].find(item => item.id === game.id)
-        if(!existingGame) {
-            if(library === 'playing') {
-                dispatch(removeGameFromUncategorizedLibrary(game))
-                dispatch(removeGameFromCompletedLibrary(game))
-                dispatch(removeGameFromPlayedLibrary(game))
-                dispatch(removeGameFromWantedLibrary(game))
-                dispatch(addGameToPlayingLibrary(game));
-            } else if(library === 'completed') {
-                dispatch(removeGameFromUncategorizedLibrary(game))
-                dispatch(removeGameFromPlayingLibrary(game))
-                dispatch(removeGameFromPlayedLibrary(game))
-                dispatch(removeGameFromWantedLibrary(game))
-                dispatch(addGameToCompletedLibrary(game));
-            } else if(library === 'played') {
-                dispatch(removeGameFromUncategorizedLibrary(game))
-                dispatch(removeGameFromPlayingLibrary(game))
-                dispatch(removeGameFromCompletedLibrary(game))
-                dispatch(removeGameFromWantedLibrary(game))
-                dispatch(addGameToPlayedLibrary(game));
-            } else if(library === 'wantPlay') {
-                dispatch(removeGameFromUncategorizedLibrary(game))
-                dispatch(removeGameFromPlayingLibrary(game))
-                dispatch(removeGameFromCompletedLibrary(game))
-                dispatch(removeGameFromPlayedLibrary(game))
-                dispatch(addGameToWantPlayLibrary(game));
-            }
+    function handleRemoveDispatch(existingLib, game) {
+        switch (existingLib) {
+            case 'uncategorized':
+                return removeGameFromUncategorizedLibrary(game);
+            case 'playing':
+                return removeGameFromPlayingLibrary(game);
+            case 'completed':
+                return removeGameFromCompletedLibrary(game);
+            case 'played':
+                return removeGameFromPlayedLibrary(game);
+            case 'wantPlay':
+                return removeGameFromWantedLibrary(game);
         }
     }
 
+    const handleGameAddingToLibrary = (library, game) => {
+        let existingGame = user.library[library].find(item => item.id === game.id);
+        let gameLibrary = game.library;
+        if(!existingGame) {
+            if(library === 'playing') {
+                dispatch(handleRemoveDispatch(gameLibrary, game))
+                dispatch(addGameToPlayingLibrary(game));
+            } else if(library === 'completed') {
+                dispatch(handleRemoveDispatch(gameLibrary, game))
+                dispatch(addGameToCompletedLibrary(game));
+            } else if(library === 'played') {
+                dispatch(handleRemoveDispatch(gameLibrary, game))
+                dispatch(addGameToPlayedLibrary(game));
+            } else if(library === 'wantPlay') {
+                dispatch(handleRemoveDispatch(gameLibrary, game))
+                dispatch(addGameToWantPlayLibrary(game));
+            }
+        }
+    };
+
     const handleGameRemoveFromLibrary = (game) => {
-        dispatch(removeGameFromUncategorizedLibrary(game))
-        dispatch(removeGameFromPlayingLibrary(game))
-        dispatch(removeGameFromCompletedLibrary(game))
-        dispatch(removeGameFromPlayedLibrary(game))
-        dispatch(removeGameFromWantedLibrary(game))
-    }
+        let gameLibrary = game.library;
+        dispatch(handleRemoveDispatch(gameLibrary, game));
+    };
 
     return (
         <div className="library-game">

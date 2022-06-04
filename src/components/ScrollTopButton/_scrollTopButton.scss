@@ -12,6 +12,10 @@
   bottom: 5%;
   cursor: pointer;
 
+  @include respond(phone) {
+    right: 5%;
+  }
+
   &-icon {
     fill: rgba(255, 255, 255, 0.4);
     width: 3rem;

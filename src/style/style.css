@@ -98,7 +98,7 @@ $breakpoint arguement choices:
         width: 60%; } }
     @media only screen and (max-width: 56.25em) {
       .footer__newsletter {
-        width: 80%; } }
+        width: 70%; } }
     @media only screen and (max-width: 37.5em) {
       .footer__newsletter {
         grid-column: 1 / -1;
@@ -341,6 +341,9 @@ $breakpoint arguement choices:
       align-items: center;
       list-style: none;
       gap: 2rem; }
+      @media only screen and (max-width: 31.25em) {
+        .header__user-nav-list {
+          gap: 1rem; } }
     .header__user-nav-item {
       position: relative; }
       .header__user-nav-item a {
@@ -490,7 +493,7 @@ $breakpoint arguement choices:
   @media only screen and (max-width: 25em) {
     .games {
       grid-template-columns: minmax(20rem, 1fr);
-      padding: 0 5rem; } }
+      padding: 0 2rem; } }
   .games__sort {
     grid-row: 1 / 2;
     grid-column: 1 / -1; }
@@ -631,6 +634,9 @@ $breakpoint arguement choices:
   right: 1%;
   bottom: 5%;
   cursor: pointer; }
+  @media only screen and (max-width: 37.5em) {
+    .scroll-top-btn {
+      right: 5%; } }
   .scroll-top-btn-icon {
     fill: rgba(255, 255, 255, 0.4);
     width: 3rem;

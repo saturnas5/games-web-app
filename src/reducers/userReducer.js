@@ -40,15 +40,15 @@ const userReducer = (state = initState, action) => {
         case 'remove-from-wanted-library':
             return {...state, library: {...state.library, wantPlay: state.library.wantPlay.filter(game => game.id !== action.payload.id)}}
         case 'add-game-to-library':
-            return {...state, library: {...state.library, uncategorized: [...state.library.uncategorized, action.payload]}}
+            return {...state, library: {...state.library, uncategorized: [...state.library.uncategorized, {...action.payload, library: 'uncategorized'}]}}
         case 'add-game-to-playing-library':
-            return {...state, library: {...state.library, playing: [...state.library.playing, action.payload]}}
+            return {...state, library: {...state.library, playing: [...state.library.playing, {...action.payload, library: 'playing'}]}}
         case 'add-game-to-completed-library':
-            return {...state, library: {...state.library, completed: [...state.library.completed, action.payload]}}
+            return {...state, library: {...state.library, completed: [...state.library.completed, {...action.payload, library: 'completed'}]}}
         case 'add-game-to-played-library':
-            return {...state, library: {...state.library, played: [...state.library.played, action.payload]}}
+            return {...state, library: {...state.library, played: [...state.library.played, {...action.payload, library: 'played'}]}}
         case 'add-game-to-wanted-library':
-            return {...state, library: {...state.library, wantPlay: [...state.library.wantPlay, action.payload]}}
+            return {...state, library: {...state.library, wantPlay: [...state.library.wantPlay, {...action.payload, library: 'wantPlay'}]}}
         case 'set-game-platform':
             return state;
         default:
