@@ -5,6 +5,13 @@
   padding: 5rem 10rem;
   border-bottom: 1px solid #ededed;
 
+  @include respond(tab-land) {
+    padding: 5rem 5rem;
+  }
+  @include respond(tab-port) {
+    padding: 5rem 2rem;
+  }
+
   &__logo {
 
     &-img {
@@ -107,7 +114,7 @@
   }
 
   &__login-box {
-    width: 25rem;
+    max-width: 18%;
     display: flex;
     justify-content: flex-end;
   }

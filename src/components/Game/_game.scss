@@ -51,6 +51,16 @@
     padding: 1rem;
     position: relative;
 
+    @include respond(normal) {
+      gap: .5rem;
+      padding: 1rem .5rem;
+    }
+    @include respond(tab-port) {
+      gap: .4rem;
+      padding: 1rem .3rem;
+    }
+
+
     &-btn {
       background-color: hsla(0,0%,100%,.4);
       border: none;
@@ -61,6 +71,15 @@
       font-family: inherit;
       font-weight: 500;
       transition: all .2s;
+
+      @include respond(normal) {
+        padding: .5rem .5rem;
+      }
+      @include respond(tab-port) {
+        font-size: 1.4rem;
+        gap: 1px;
+        padding: .3rem .3rem;
+      }
 
       span {
         color: #ffffff;

@@ -3,6 +3,21 @@
   grid-template-columns: 25rem 1fr;
   padding: 5rem 10rem 15rem 10rem;
 
+  @include respond(normal) {
+    grid-template-columns: 20rem 1fr;
+    padding: 5rem 5rem 15rem 5rem;
+  }
+  @include respond(small-desktop) {
+    grid-template-columns: 17rem 1fr;
+    padding: 5rem 1rem 15rem 1rem;
+  }
+  @include respond(phone) {
+    grid-template-columns: 25rem 1fr;
+  }
+  @include respond(small-phone) {
+    grid-template-columns: 17rem 1fr;
+  }
+
   &__menu {
     width: 100%;
     height: 50vh;

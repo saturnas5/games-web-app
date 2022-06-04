@@ -139,4 +139,18 @@
       color: #ffffff;
     }
   }
+
+  &__platform-select {
+    position: absolute;
+    bottom: 1.1rem;
+    right: 7px;
+    background-color: transparent;
+    color: #898c89;
+    border: none;
+    font-weight: 500;
+    font-family: inherit;
+    font-size: 1.1rem;
+    padding: .5rem .5rem;
+    width: 60%;
+  }
 }

@@ -1,8 +1,19 @@
 .footer {
   padding: 5rem 10rem;
   display: grid;
-  grid-template-columns: max-content 1fr max-content;
+  grid-template-columns: max-content minmax(20rem, 1fr) max-content;
   border-top: 1px solid #ededed;
+
+  @include respond(tab-land) {
+    padding: 5rem 5rem;
+  }
+  @include respond(tab-port) {
+    padding: 5rem 2rem;
+  }
+  @include respond(phone) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr;
+  }
 
   &__logo {
     width: auto;
@@ -17,6 +28,11 @@
     gap: 3rem;
     align-items: center;
     justify-content: center;
+
+    @include respond(phone) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
 
     &-box {
       display: flex;
@@ -40,6 +56,17 @@
   &__newsletter {
     justify-self: center;
     width: 30%;
+
+    @include respond(tab-land) {
+      width: 60%;
+    }
+    @include respond(tab-port) {
+      width: 80%;
+    }
+    @include respond(phone) {
+      grid-column: 1 / -1;
+      grid-row: 2 / -1;
+    }
 
     &-title {
       color: #ffffff;
@@ -83,6 +110,11 @@
   &__terms {
     justify-self: center;
     align-self: center;
+
+    @include respond(phone) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
 
     &-list {
       list-style: none;

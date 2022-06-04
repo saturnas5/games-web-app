@@ -105,3 +105,13 @@ export const addGameToWantPlayLibrary = (game) => (dispatch) => {
         payload: game
     });
 };
+
+export const setGamePlatform = (game, platform) => (dispatch) => {
+    dispatch({
+        type: 'set-game-platform',
+        payload: {
+            game: game,
+            platform: platform
+        }
+    });
+};

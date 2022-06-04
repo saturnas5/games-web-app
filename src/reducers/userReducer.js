@@ -49,6 +49,8 @@ const userReducer = (state = initState, action) => {
             return {...state, library: {...state.library, played: [...state.library.played, action.payload]}}
         case 'add-game-to-wanted-library':
             return {...state, library: {...state.library, wantPlay: [...state.library.wantPlay, action.payload]}}
+        case 'set-game-platform':
+            return state;
         default:
             return state;
     };

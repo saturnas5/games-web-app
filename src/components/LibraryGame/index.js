@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {setPlatforms} from "../../utils/_utils";
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
@@ -11,13 +11,18 @@ import {
     addGameToPlayingLibrary,
     addGameToCompletedLibrary,
     addGameToPlayedLibrary,
-    addGameToWantPlayLibrary
+    addGameToWantPlayLibrary,
+    setGamePlatform
 } from "../../reducers/actions/userActions";
 
 const LibraryGame = ({ game }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
+    const [platform, setPlatform] = useState('');
 
+    console.log(platform)
+
+    // Reikes perrasyti funkcija, kad nereiketu atlikti nereikalingu veiksmu.
     const handleGameAddingToLibrary = (library, game) => {
         let existingGame = user.library[library].find(item => item.id === game.id)
         if(!existingGame) {
@@ -79,6 +84,12 @@ const LibraryGame = ({ game }) => {
                 <span onClick={() => handleGameAddingToLibrary('wantPlay', game)} className="library-game__library-select-link">Want play</span>
                 <span onClick={() => handleGameRemoveFromLibrary(game)} className="library-game__library-select-remove">Remove Game</span>
             </div>
+            <select onChange={e => dispatch(setGamePlatform(game, e.target.value))} className='library-game__platform-select'>
+                <option className='library-game__platform-select-option' value="none">Select platform </option>
+                {game.platforms.map(platform => {
+                    return <option className='library-game__platform-select-option' value={platform.platform.slug} >{platform.platform.name}</option>
+                })}
+            </select>
         </div>
     );
 };
