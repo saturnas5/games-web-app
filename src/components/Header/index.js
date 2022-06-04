@@ -50,7 +50,7 @@ const Header = () => {
                         <Link to='/user'><img src={userImg} alt="User photo" className="header__user-nav-item-img"/></Link>
                     </li>
                     <li className="header__user-nav-item">
-                        <Link to='/'><span>My library</span></Link>
+                        <Link to='/user/library'><span>My library</span></Link>
                     </li>
                     <li className="header__user-nav-item">
                         <Link to='/'><FaBell className='header__user-nav-icon'/></Link>

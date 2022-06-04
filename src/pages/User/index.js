@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import defaultPhoto from '../../img/default-user.png'
 import {NavLink, Link, Switch, Route, useRouteMatch} from "react-router-dom";
 import Library from "../../components/Library";
+import Overview from "../../components/Overview";
 
 const User = () => {
     const user = useSelector(state => state.user);
@@ -45,7 +46,7 @@ const User = () => {
                 <div className="user__display-box">
                     <Switch>
                         <Route exact path={`${match.path}`}>
-                            <h1>Overview</h1>
+                            <Overview/>
                         </Route>
                         <Route exact path={`${match.path}/library`}>
                             <Library/>

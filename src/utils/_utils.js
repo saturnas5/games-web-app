@@ -79,3 +79,94 @@ export const setPlatforms = (platform) => {
     }
 }
 
+// return object with genres array that are in user library
+export const countGamesGenresInLibrary = (user) => {
+    let librarys = Object.keys(user.library);
+
+    let genresLibrary = {
+        actions: [],
+        indie: [],
+        adventure: [],
+        rolePlayingGamesRpg: [],
+        strategy: [],
+        shooter: [],
+        casual: [],
+        simulation: [],
+        puzzle: [],
+        arcade: [],
+        platformer: [],
+        racing: [],
+        massivelyMultiplayer: [],
+        sports: [],
+        fighting: [],
+        family: [],
+        boardGames: [],
+        educational: [],
+        card: []
+    };
+
+    for(let i = 0; i < Object.keys(user.library).length; i++) {
+        for(let j = 0; j < user.library[librarys[i]].length; j++) {
+            for(let k = 0; k < user.library[librarys[i]][j].genres.length; k++){
+                if(user.library[librarys[i]][j].genres[k].slug === 'action') {
+                    genresLibrary.actions.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'indie') {
+                    genresLibrary.indie.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'adventure') {
+                    genresLibrary.adventure.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'role-playing-games-rpg') {
+                    genresLibrary.rolePlayingGamesRpg.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'strategy') {
+                    genresLibrary.strategy.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'shooter') {
+                    genresLibrary.shooter.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'casual') {
+                    genresLibrary.shooter.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'simulation') {
+                    genresLibrary.simulation.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'puzzle') {
+                    genresLibrary.puzzle.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'arcade') {
+                    genresLibrary.arcade.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'platformer') {
+                    genresLibrary.platformer.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'racing') {
+                    genresLibrary.racing.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'massively-multiplayer') {
+                    genresLibrary.massivelyMultiplayer.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'sports') {
+                    genresLibrary.sports.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'fighting') {
+                    genresLibrary.fighting.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'family') {
+                    genresLibrary.family.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'board-games') {
+                    genresLibrary.boardGames.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'educational') {
+                    genresLibrary.educational.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+                if(user.library[librarys[i]][j].genres[k].slug === 'card') {
+                    genresLibrary.card.push(user.library[librarys[i]][j].genres[k].slug);
+                }
+            }
+        }
+    }
+    return genresLibrary;
+};
