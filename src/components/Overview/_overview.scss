@@ -11,26 +11,20 @@
   &__genres {
     border: 1px solid #ffffff;
     padding: 0 2rem 2rem 2rem;
+    margin-bottom: 3rem;
   }
 
-  &__genres-title {
+  &__stats-title {
     color: #ffffff;
     font-size: 1.6rem;
     padding-top: 3rem;
     text-align: center;
   }
 
-}
-
-.box {
-  height: 5rem;
-  width: 100%;
-  border: 1px solid #ffffff;
-  overflow: hidden;
-}
-
-.in-box {
-  height: 5rem;
-  background-color: chocolate;
+  &__library {
+    border: 1px solid #ffffff;
+    padding: 0 2rem 2rem 2rem;
+    margin-bottom: 3rem;
+  }
 
 }

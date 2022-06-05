@@ -21,11 +21,16 @@ const Overview = () => {
         return sum;
     }
 
-    function statsSliderHandler(genresNum) {
-        return (genresNum / countTotalGamesLibrary()) * 100;
+    function statsSliderHandler(num) {
+        return (num / countTotalGamesLibrary()) * 100;
     }
 
-
+    function countGamesByLibrary(user) {
+        const librariesKeys = Object.keys(user.library);
+        return librariesKeys.map(key => {
+            return {library: key ,count: user.library[key].length}
+        })
+    }
 
     return (
         <div className='overview'>
@@ -33,16 +38,17 @@ const Overview = () => {
                 {`Total Games in Your Library: ${countTotalGamesLibrary()}`}
             </h2>
             <div className="overview__genres">
-                <h3 className="overview__genres-title">
+                <h3 className="overview__stats-title">
                     Games Overview By Genres
                 </h3>
-                {genresArr.map(genre => {
+                {genresArr.map((genre, index) => {
                     return (
                         <>
                             {
                                 countGamesGenresInLibrary(user)[genre].length > 0
                                 &&
                                 <InfoStatsBar
+                                    key={index}
                                     title={genre}
                                     percentage={statsSliderHandler(countGamesGenresInLibrary(user)[genre].length)}
                                     count={countGamesGenresInLibrary(user)[genre].length}
@@ -51,6 +57,30 @@ const Overview = () => {
                         </>
                     )
                 })}
+            </div>
+            <div className="overview__library">
+                <h3 className="overview__stats-title">
+                    Games Overview By Librarys
+                </h3>
+
+                {
+                    countGamesByLibrary(user).map(library => {
+                        return (
+                            <>
+                                {
+                                    library.count > 0
+                                    &&
+                                    <InfoStatsBar
+                                        key={library.library}
+                                        count={library.count}
+                                        title={library.library}
+                                        percentage={statsSliderHandler(library.count)}
+                                    />
+                                }
+                            </>
+                        )
+                    })
+                }
             </div>
         </div>
     );
