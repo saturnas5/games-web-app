@@ -92,6 +92,21 @@
         }
       }
 
+      &:disabled {
+        opacity: .7;
+
+        &:hover {
+          background-color: hsla(0,0%,100%,.4);
+        }
+
+        &:hover .game__cta-btn-icon {
+          fill: #ffffff;
+        }
+        &:hover .game__cta-btn-text {
+          color: #ffffff;
+        }
+      }
+
       @include respond(normal) {
         padding: .5rem .5rem;
       }

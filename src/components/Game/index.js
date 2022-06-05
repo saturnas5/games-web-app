@@ -48,11 +48,12 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
             </Link>
                 <div className="game__cta">
                     <button
+                        disabled={!user.token}
                         onClick={() => handleGameAddLibrary(game)}
-                        className={`game__cta-btn ${inLibrary ? 'active' : ''}`}
+                        className={`game__cta-btn ${inLibrary && user.token ? 'active' : ''}`}
                     >
-                        <FaPlus className={`game__cta-btn-icon ${inLibrary ? 'active' : ''}`}/>
-                        <span>{inLibrary ? `Added` : `Library`}</span>
+                        <FaPlus className={`game__cta-btn-icon ${inLibrary && user.token ? 'active' : ''}`}/>
+                        <span className='game__cta-btn-text' >{inLibrary && user.token ? `Added` : `Library`}</span>
                     </button>
                     <button className="game__cta-btn"><span>Rate</span></button>
                     <button className="game__cta-btn"><FaListUl className="game__cta-btn-icon"/><span>Wish list</span></button>

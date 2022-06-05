@@ -232,6 +232,14 @@ $breakpoint arguement choices:
           background-color: forestgreen; }
           .game__cta-btn.active:hover span {
             color: #ffffff; }
+      .game__cta-btn:disabled {
+        opacity: .7; }
+        .game__cta-btn:disabled:hover {
+          background-color: rgba(255, 255, 255, 0.4); }
+        .game__cta-btn:disabled:hover .game__cta-btn-icon {
+          fill: #ffffff; }
+        .game__cta-btn:disabled:hover .game__cta-btn-text {
+          color: #ffffff; }
       @media only screen and (max-width: 106.25em) {
         .game__cta-btn {
           padding: .5rem .5rem; } }
