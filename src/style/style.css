@@ -858,6 +858,23 @@ $breakpoint arguement choices:
     padding: .5rem .5rem;
     width: 60%; }
 
+.overview__title {
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1.6;
+  letter-spacing: .7px;
+  margin-bottom: 3rem; }
+
+.overview__genres {
+  border: 1px solid #ffffff;
+  padding: 0 2rem 2rem 2rem; }
+
+.overview__genres-title {
+  color: #ffffff;
+  font-size: 1.6rem;
+  padding-top: 3rem;
+  text-align: center; }
+
 .box {
   height: 5rem;
   width: 100%;
@@ -867,6 +884,33 @@ $breakpoint arguement choices:
 .in-box {
   height: 5rem;
   background-color: chocolate; }
+
+.info-stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem; }
+  .info-stats-bar__title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding-top: 1.5rem;
+    width: 25%; }
+  .info-stats-bar__slide-box {
+    width: 100%; }
+  .info-stats-bar__slide-info {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 1.4rem;
+    padding: 0 0 .5rem .5rem; }
+  .info-stats-bar__slide-body {
+    height: 1rem;
+    width: 100%;
+    border: 1px solid #ffffff;
+    overflow: hidden; }
+  .info-stats-bar__slide {
+    height: 1rem;
+    background-color: #ffffff; }
 
 .game-details {
   padding: 5rem 10rem 10rem 10rem;

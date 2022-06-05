@@ -8,7 +8,27 @@ import {
     removeGameFromUncategorizedLibrary, removeGameFromWantedLibrary
 } from "../reducers/actions/userActions";
 
-import {useDispatch, useSelector} from "react-redux";
+export const genresArr = [
+    'actions',
+    'indie',
+    'adventure',
+    'rolePlayingGamesRpg',
+    'strategy',
+    'shooter',
+    'casual',
+    'simulation',
+    'puzzle',
+    'arcade',
+    'platformer',
+    'racing',
+    'massivelyMultiplayer',
+    'sports',
+    'fighting',
+    'family',
+    'boardGames',
+    'educational',
+    'card'
+];
 
 export const getLastWeek = () => {
     let today = new Date();

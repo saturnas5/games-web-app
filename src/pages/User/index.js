@@ -9,7 +9,6 @@ import Overview from "../../components/Overview";
 const User = () => {
     const user = useSelector(state => state.user);
     const match = useRouteMatch();
-    console.log(match)
 
     return (
         <div className='user'>

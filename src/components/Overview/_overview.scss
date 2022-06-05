@@ -1,5 +1,25 @@
 .overview {
 
+  &__title {
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1.6;
+    letter-spacing: .7px;
+    margin-bottom: 3rem;
+  }
+
+  &__genres {
+    border: 1px solid #ffffff;
+    padding: 0 2rem 2rem 2rem;
+  }
+
+  &__genres-title {
+    color: #ffffff;
+    font-size: 1.6rem;
+    padding-top: 3rem;
+    text-align: center;
+  }
+
 }
 
 .box {

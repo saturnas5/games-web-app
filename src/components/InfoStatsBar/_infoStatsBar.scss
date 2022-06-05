@@ -1,0 +1,37 @@
+.info-stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  &__title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding-top: 1.5rem;
+    width: 25%;
+  }
+
+  &__slide-box {
+    width: 100%;
+  }
+
+  &__slide-info {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 1.4rem;
+    padding: 0 0 .5rem .5rem;
+  }
+
+  &__slide-body {
+    height: 1rem;
+    width: 100%;
+    border: 1px solid #ffffff;
+    overflow: hidden;
+  }
+
+  &__slide {
+    height: 1rem;
+    background-color: #ffffff;
+  }
+}
