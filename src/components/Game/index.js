@@ -32,24 +32,19 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
     }, [rated])
 
     const handleGameCheckForLibrary = (game) => {
-        let inUncategorized = user.library.uncategorized.find(item => item.id === game.id);
-        let inPlaying = user.library.playing.find(item => item.id === game.id);
-        let inCompleted = user.library.completed.find(item => item.id === game.id);
-        let inPlayed = user.library.played.find(item => item.id === game.id);
-        let inWantPlay = user.library.wantPlay.find(item => item.id === game.id);
-        if(inUncategorized || inPlaying || inCompleted || inPlayed || inWantPlay) {
-            setInLibrary(true)
-        }
+        const librariesKeys = Object.keys(user.library);
+        librariesKeys.map(key => {
+            let exist = user.library[key].find(item => item.id === game.id)
+            if(exist) {setInLibrary(true)}
+        })
     }
 
     const handleGameCheckForReview = (game) => {
         const reviewsKeys = Object.keys(user.reviews);
-        for(let i = 0; i < reviewsKeys.length; i++) {
-            let existing = user.reviews[reviewsKeys[i]].find(item => item.id === game.id)
-            if(existing) {
-                setRated(true)
-            }
-        }
+        reviewsKeys.map(key => {
+            let exist = user.reviews[key].find(item => item.id === game.id)
+            if(exist) {setRated(true)}
+        })
     }
 
     const handleGameAddLibrary = (game) => {
@@ -60,12 +55,16 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
     const handleGameRating = (review, game) => {
         switch (review) {
             case 'exceptional':
+                setRated(true);
                 return dispatch(addGameReviewExceptional(game))
             case 'recommended':
+                setRated(true);
                 return dispatch(addGameReviewRecommended(game))
             case 'notWorth':
+                setRated(true);
                 return dispatch(addGameReviewNotWorth(game))
             case 'awful':
+                setRated(true);
                 return dispatch(addGameReviewAwful(game))
         }
     }
