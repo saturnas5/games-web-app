@@ -5,6 +5,7 @@ import defaultPhoto from '../../img/default-user.png'
 import {NavLink, Link, Switch, Route, useRouteMatch} from "react-router-dom";
 import Library from "../../components/Library";
 import Overview from "../../components/Overview";
+import Reviews from "../../components/Reviews";
 
 const User = () => {
     const user = useSelector(state => state.user);
@@ -54,7 +55,7 @@ const User = () => {
                             <h1>Wishlist</h1>
                         </Route>
                         <Route exact path={`${match.path}/reviews`}>
-                            <h1>Reviews</h1>
+                            <Reviews/>
                         </Route>
                         <Route exact path={`${match.path}/collections`}>
                             <h1>Collections</h1>

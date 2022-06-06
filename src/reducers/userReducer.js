@@ -1,4 +1,6 @@
 import React from "react";
+import {formatDate} from "../utils/_utils";
+import anton from '../img/anton.jpg'
 
 const initState = {
     userId: null,
@@ -21,11 +23,11 @@ const initState = {
     messages: [],
     settings: {
         username: null,
-        firstName: null,
-        lastName: null,
+        firstName: 'Anton',
+        lastName: 'Chigurh',
         email: null,
         password: null,
-        profileImg: null,
+        profileImg: anton,
     },
 };
 
@@ -48,23 +50,23 @@ const userReducer = (state = initState, action) => {
         case 'remove-from-wanted-library':
             return {...state, library: {...state.library, wantPlay: state.library.wantPlay.filter(game => game.id !== action.payload.id)}}
         case 'add-game-to-library':
-            return {...state, library: {...state.library, uncategorized: [...state.library.uncategorized, {...action.payload, library: 'uncategorized'}]}}
+            return {...state, library: {...state.library, uncategorized: [...state.library.uncategorized, {...action.payload, library: 'uncategorized', date_added: formatDate(new Date())}]}}
         case 'add-game-to-playing-library':
-            return {...state, library: {...state.library, playing: [...state.library.playing, {...action.payload, library: 'playing'}]}}
+            return {...state, library: {...state.library, playing: [...state.library.playing, {...action.payload, library: 'playing', date_added: formatDate(new Date())}]}}
         case 'add-game-to-completed-library':
-            return {...state, library: {...state.library, completed: [...state.library.completed, {...action.payload, library: 'completed'}]}}
+            return {...state, library: {...state.library, completed: [...state.library.completed, {...action.payload, library: 'completed', date_added: formatDate(new Date())}]}}
         case 'add-game-to-played-library':
-            return {...state, library: {...state.library, played: [...state.library.played, {...action.payload, library: 'played'}]}}
+            return {...state, library: {...state.library, played: [...state.library.played, {...action.payload, library: 'played', date_added: formatDate(new Date())}]}}
         case 'add-game-to-wanted-library':
-            return {...state, library: {...state.library, wantPlay: [...state.library.wantPlay, {...action.payload, library: 'wantPlay'}]}}
+            return {...state, library: {...state.library, wantPlay: [...state.library.wantPlay, {...action.payload, library: 'wantPlay', date_added: formatDate(new Date())}]}}
         case 'add-game-review-exceptional':
-            return {...state, reviews: {...state.reviews, exceptional: [...state.reviews.exceptional, {...action.payload, review: 'exceptional'}]}}
+            return {...state, reviews: {...state.reviews, exceptional: [...state.reviews.exceptional, {...action.payload, review: 'exceptional', date_reviewed: formatDate(new Date())}]}}
         case 'add-game-review-recommended':
-            return {...state, reviews: {...state.reviews, recommended: [...state.reviews.recommended, {...action.payload, review: 'recommended'}]}}
+            return {...state, reviews: {...state.reviews, recommended: [...state.reviews.recommended, {...action.payload, review: 'recommended', date_reviewed: formatDate(new Date())}]}}
         case 'add-game-review-notWorth':
-            return {...state, reviews: {...state.reviews, notWorth: [...state.reviews.notWorth, {...action.payload, review: 'notWorth'}]}}
+            return {...state, reviews: {...state.reviews, notWorth: [...state.reviews.notWorth, {...action.payload, review: 'notWorth', date_reviewed: formatDate(new Date())}]}}
         case 'add-game-review-awful':
-            return {...state, reviews: {...state.reviews, awful: [...state.reviews.awful, {...action.payload, review: 'awful'}]}}
+            return {...state, reviews: {...state.reviews, awful: [...state.reviews.awful, {...action.payload, review: 'awful', date_reviewed: formatDate(new Date())}]}}
         default:
             return state;
     };

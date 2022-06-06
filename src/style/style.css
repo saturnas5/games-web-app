@@ -951,6 +951,39 @@ $breakpoint arguement choices:
     height: 1rem;
     background-color: #ffffff; }
 
+.review {
+  background-color: #515351;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px; }
+  .review__box {
+    display: flex;
+    align-items: center;
+    gap: 2rem; }
+  .review__img {
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ffffff; }
+  .review__text {
+    font-size: 1.2rem;
+    color: #ededed;
+    letter-spacing: .7px;
+    line-height: 1.6; }
+  .review__link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    font-size: 1.3rem; }
+    .review__link:hover {
+      text-decoration: underline; }
+  .review__date {
+    display: inline-block;
+    padding-top: .5rem;
+    font-size: 1.2rem; }
+
 .game-details {
   padding: 5rem 10rem 10rem 10rem;
   background-size: cover;

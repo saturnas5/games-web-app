@@ -64,14 +64,14 @@ const Overview = () => {
                 </h3>
 
                 {
-                    countGamesByLibrary(user).map(library => {
+                    countGamesByLibrary(user).map((library, index) => {
                         return (
                             <>
                                 {
                                     library.count > 0
                                     &&
                                     <InfoStatsBar
-                                        key={library.library}
+                                        key={index}
                                         count={library.count}
                                         title={library.library}
                                         percentage={statsSliderHandler(library.count)}

@@ -1,0 +1,45 @@
+.review {
+  background-color: #515351;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+
+  &__box {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__img {
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+  }
+
+  &__text {
+    font-size: 1.2rem;
+    color: #ededed;
+    letter-spacing: .7px;
+    line-height: 1.6;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    font-size: 1.3rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__date {
+    display: inline-block;
+    padding-top: .5rem;
+    font-size: 1.2rem;
+  }
+}
