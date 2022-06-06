@@ -115,3 +115,31 @@ export const setGamePlatform = (game, platform) => (dispatch) => {
         }
     });
 };
+
+export const addGameReviewExceptional = (game) => (dispatch) => {
+    dispatch({
+        type: 'add-game-review-exceptional',
+        payload: game
+    })
+}
+
+export const addGameReviewRecommended = (game) => (dispatch) => {
+    dispatch({
+        type: 'add-game-review-recommended',
+        payload: game
+    })
+}
+
+export const addGameReviewNotWorth = (game) => (dispatch) => {
+    dispatch({
+        type: 'add-game-review-notWorth',
+        payload: game
+    })
+}
+
+export const addGameReviewAwful = (game) => (dispatch) => {
+    dispatch({
+        type: 'add-game-review-awful',
+        payload: game
+    })
+}

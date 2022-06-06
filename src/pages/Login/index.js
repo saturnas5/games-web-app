@@ -38,7 +38,7 @@ const Login = () => {
                 <h4 className="login__title">
                     Login
                 </h4>
-                <span className='login__login-text'>Have an account? Login with your email.</span>
+                <span className='login__login-text'>Login with any email and password</span>
                 <form className='login__form' onSubmit={e => handleLoginForm(e)}>
                     <FormInput label='Email' type='email' placeholder='Email' value={loginEmail} onInputChange={setLoginEmail}/>
                     <FormInput label='Password' type='password' placeholder='Password' value={loginPassword} onInputChange={setLoginPassword}/>

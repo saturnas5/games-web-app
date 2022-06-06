@@ -1,3 +1,5 @@
+import React from "react";
+
 const initState = {
     userId: null,
     isLoggedIn : false,
@@ -9,6 +11,12 @@ const initState = {
         completed: [],
         played: [],
         wantPlay: []
+    },
+    reviews: {
+        exceptional: [],
+        recommended: [],
+        notWorth: [],
+        awful: [],
     },
     messages: [],
     settings: {
@@ -49,8 +57,14 @@ const userReducer = (state = initState, action) => {
             return {...state, library: {...state.library, played: [...state.library.played, {...action.payload, library: 'played'}]}}
         case 'add-game-to-wanted-library':
             return {...state, library: {...state.library, wantPlay: [...state.library.wantPlay, {...action.payload, library: 'wantPlay'}]}}
-        case 'set-game-platform':
-            return state;
+        case 'add-game-review-exceptional':
+            return {...state, reviews: {...state.reviews, exceptional: [...state.reviews.exceptional, {...action.payload, review: 'exceptional'}]}}
+        case 'add-game-review-recommended':
+            return {...state, reviews: {...state.reviews, recommended: [...state.reviews.recommended, {...action.payload, review: 'recommended'}]}}
+        case 'add-game-review-notWorth':
+            return {...state, reviews: {...state.reviews, notWorth: [...state.reviews.notWorth, {...action.payload, review: 'notWorth'}]}}
+        case 'add-game-review-awful':
+            return {...state, reviews: {...state.reviews, awful: [...state.reviews.awful, {...action.payload, review: 'awful'}]}}
         default:
             return state;
     };

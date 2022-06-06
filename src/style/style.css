@@ -240,6 +240,8 @@ $breakpoint arguement choices:
           fill: #ffffff; }
         .game__cta-btn:disabled:hover .game__cta-btn-text {
           color: #ffffff; }
+        .game__cta-btn:disabled:hover span {
+          color: #ffffff; }
       @media only screen and (max-width: 106.25em) {
         .game__cta-btn {
           padding: .5rem .5rem; } }
@@ -323,6 +325,39 @@ $breakpoint arguement choices:
       .game__info-genres span {
         color: rgba(190, 190, 190, 0.5);
         font-size: 1.2rem; }
+  .game__rate-toggle {
+    position: relative; }
+  .game__rate-box {
+    width: 12rem;
+    z-index: 50;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: -3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden; }
+    .game__rate-box:not(:last-child) {
+      padding-bottom: 2rem; }
+  .game__rate-btn {
+    display: block;
+    font-size: 1.2rem;
+    cursor: pointer; }
+    .game__rate-btn:first-child {
+      padding-top: 1rem; }
+    .game__rate-btn:not(:last-child) {
+      padding-bottom: 1rem; }
+  .game__rate-skip {
+    display: block;
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+    cursor: pointer; }
+
+.open .game__rate-box {
+  opacity: 1;
+  visibility: visible; }
 
 .header {
   display: flex;

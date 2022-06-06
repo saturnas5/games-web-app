@@ -105,6 +105,9 @@
         &:hover .game__cta-btn-text {
           color: #ffffff;
         }
+        &:hover span {
+          color: #ffffff;
+        }
       }
 
       @include respond(normal) {
@@ -231,4 +234,51 @@
     }
   }
 
+  &__rate-toggle {
+    position: relative;
+  }
+
+  &__rate-box {
+    width: 12rem;
+    z-index: 50;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: -3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    &:not(:last-child) {
+      padding-bottom: 2rem;
+    }
+  }
+
+  &__rate-btn {
+    display: block;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:first-child {
+      padding-top: 1rem;
+    }
+    &:not(:last-child) {
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__rate-skip {
+    display: block;
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+  }
+}
+
+
+
+.open .game__rate-box {
+  opacity: 1;
+  visibility: visible;
 }
