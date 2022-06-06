@@ -1,4 +1,5 @@
 const base_url = 'https://api.rawg.io/api/games?key=b87557d54bff4bdcba5716f38b6c66dd';
+const game_API = '?key=b87557d54bff4bdcba5716f38b6c66dd';
 
 export const getCurrentMonth = () => {
     const month = new Date().getMonth() + 1;
@@ -39,3 +40,4 @@ export const currentGameScreensURL = (id) => `https://api.rawg.io/api/games/${id
 export const gamesByPlatformURL = (platformId, page) => `${base_url}&platforms=${platformId}&page_size=16&page=${page}`;
 export const gamesByGenreURL = (genre, page) => `${base_url}&page_size=16&page=${page}&genres=${genre}`;
 export const gamesByDateURL = (to, from, page) => `${base_url}&dates=${to},${from}&ordering=-released&page_size=16&page=${page}`;
+export const currentGameSeriesURL = (gameSlug) => `https://api.rawg.io/api/games/${gameSlug}/game-series${game_API}`

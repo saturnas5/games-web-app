@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import {useSelector} from "react-redux";
-import {formatDate} from "../../utils/_utils";
 import Review from "../Review";
 
 const Reviews = () => {
@@ -24,6 +23,9 @@ const Reviews = () => {
 
     return (
         <div className="reviews">
+            <div className="reviews__sort-box">
+
+            </div>
             {allRates.map(game => {
                 return (
                     <>

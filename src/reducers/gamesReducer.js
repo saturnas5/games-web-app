@@ -35,6 +35,8 @@ const gamesReducer = (state = initState, action) => {
             return {...state, currentGame: action.payload}
         case 'fetch-current-game-screens':
             return {...state, currentGameScreens: action.payload}
+        case 'fetch-current-game-series':
+            return {...state, currentGameSeries: action.payload}
         case 'fetch-loading':
             return {...state, isLoading: action.payload}
         case 'fetch-search-game':

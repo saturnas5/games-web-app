@@ -8,7 +8,7 @@ import {
     searchGameURL,
     gamesByPlatformURL,
     gamesByGenreURL,
-    gamesByDateURL,
+    gamesByDateURL, currentGameSeriesURL,
 } from "../../api/api";
 
 
@@ -70,6 +70,18 @@ export const loadCurrentScreens = (id) => async (dispatch) => {
         console.log(err)
     }
 
+}
+
+export const loadCurrentGameSeries = (gameSlug) => async (dispatch) => {
+    try {
+        const currentGameSeriesData = await axios.get(currentGameSeriesURL(gameSlug))
+        dispatch({
+            type: 'fetch-current-game-series',
+            payload: currentGameSeriesData.data.results
+        })
+    } catch (err) {
+        throw new Error('somthing went wrong');
+    }
 }
 
 export const loadSearchedGame = (game) => async (dispatch) => {

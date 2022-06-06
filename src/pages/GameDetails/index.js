@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {loadCurrentGame, loadCurrentScreens} from "../../reducers/actions/gamesActions";
+import {loadCurrentGame, loadCurrentGameSeries, loadCurrentScreens} from "../../reducers/actions/gamesActions";
 import {Link, useParams, useRouteMatch} from 'react-router-dom';
 import {setPlatforms} from "../../utils/_utils";
 import Loader from "../../components/Loader";
 import ScrollToTop from "../../components/ScrollToTop";
+import GameSameSeries from "../../components/GameSameSeries";
+import Game from "../../components/Game";
 
 const GameDetails = () => {
     const dispatch = useDispatch();
-    const {currentGame, currentGameScreens} = useSelector(state => state.games);
-    const { id } = useParams();
+    const { currentGame, currentGameScreens, currentGameSeries } = useSelector(state => state.games);
+    const { id, slug } = useParams();
     const match = useRouteMatch();
     const [mainImage, setMainImage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +32,7 @@ const GameDetails = () => {
         test()
         dispatch(loadCurrentGame(id))
         dispatch(loadCurrentScreens(id))
+        dispatch(loadCurrentGameSeries(slug))
     }, [id, match, dispatch])
 
     function test() {
@@ -52,7 +55,7 @@ const GameDetails = () => {
                     <img src={mainImage} alt={currentGame.name}/>
                     <div className="game-details__developers">
                         <h4 className="game-details__developers-title">Developers</h4>
-                        {currentGame.developers.map(dev => {
+                        {currentGame.developers && currentGame.developers.map(dev => {
                             return <Link key={dev.id} className="game-details__developers-link" to={`/developers/${dev.slug}`}>{dev.name}</Link>
                         })}
                     </div>
@@ -81,6 +84,16 @@ const GameDetails = () => {
                 <div className="game-details__description">
                     <p>{currentGame.description_raw}</p>
                 </div>
+                <div className="game-details__same-series">
+                    {currentGameSeries.length > 0 && currentGameSeries.map(game => {
+                        return (
+                            <div className='game-details__same-series-wrap' key={game.id}>
+                                {/*<GameSameSeries key={game.id} game={game} />*/}
+                                <Game game={game} />
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
             <ScrollToTop/>
             <HandleTitleChange/>
@@ -89,3 +102,4 @@ const GameDetails = () => {
 };
 
 export default GameDetails;
+

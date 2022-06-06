@@ -3,6 +3,8 @@
   height: 45rem;
   background-color: #333633;
   transition: all .3s;
+  flex-shrink: 0;
+  flex-grow: 0;
 
   a:link,
   a:visited {
