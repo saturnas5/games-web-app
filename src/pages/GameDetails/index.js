@@ -15,7 +15,6 @@ const GameDetails = () => {
     const match = useRouteMatch();
     const [mainImage, setMainImage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-    const [someState, setSomeState] = useState('')
 
     function HandleTitleChange() {
         useEffect(() => {
@@ -63,13 +62,13 @@ const GameDetails = () => {
                 <div className="game-details__more-info">
                     <div className="game-details__platforms">
                         {currentGame.released && <span>{currentGame.released}</span>}
-                        {currentGame.platforms.map(platform => {
+                        {currentGame.platforms && currentGame.platforms.map(platform => {
                             return setPlatforms(platform.platform.slug)
                         })}
                     </div>
                     <h1 className='game-details__title'>{currentGame.name}</h1>
                     <div className="game-details__genres">
-                        {currentGame.genres.map(genre => {
+                        {currentGame.genres && currentGame.genres.map(genre => {
                             return <Link key={genre.id} className='game-details__genres-link' to={`/genres/${genre.slug}`}>{genre.name}</Link>
                         })}
                     </div>

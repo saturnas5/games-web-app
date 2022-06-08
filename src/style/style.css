@@ -601,7 +601,7 @@ $breakpoint arguement choices:
   width: 5rem;
   height: 5rem;
   animation: spin 2s linear infinite;
-  position: absolute;
+  position: fixed;
   top: 50%;
   right: 50%;
   transform: translate(-50%, -50%); }
