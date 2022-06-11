@@ -3,7 +3,7 @@ import {formatDate} from "../utils/_utils";
 import anton from '../img/anton.jpg'
 
 const initState = {
-    userId: null,
+    userUid: null,
     isLoggedIn : false,
     token: null,
     wishList: [],
@@ -37,8 +37,10 @@ const userReducer = (state = initState, action) => {
             return {...state, isLoggedIn: true, token: action.payload}
         case 'user-signin':
             return {...state, isLoggedIn: true, token: action.payload}
+        case 'set-user-uid':
+            return {...state, isLoggedIn: true, userUid: action.payload}
         case 'user-logout':
-            return {...state, isLoggedIn: false, token: null}
+            return {...state, isLoggedIn: false, token: null, userUid: null}
         case 'remove-from-uncategorized-library':
             return {...state, library: {...state.library, uncategorized: state.library.uncategorized.filter(game => game.id !== action.payload.id)}}
         case 'remove-from-playing-library':

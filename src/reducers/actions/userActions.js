@@ -1,5 +1,32 @@
-import {generate_token} from "../../utils/_utils";
+import {auth, firestore} from "../../utils/firebase";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {setDoc, doc, getDoc} from 'firebase/firestore';
 
+export const userSignup = (email, password, firstName, lastName) => async (dispatch) => {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = await userCredential.user
+        localStorage.setItem('token', user.accessToken);
+        console.log(user)
+        await setDoc(doc(firestore, 'users', user.uid), {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            id: user.uid,
+            created: new Date(),
+        });
+        dispatch({
+            type: 'user-signin',
+            payload: user.accessToken
+        });
+        dispatch({
+            type: 'set-user-uid',
+            payload: user.uid
+        });
+    } catch (err) {
+        throw new Error('Something went wrong');
+    }
+}
 
 export const tryLocalSignin = () => async (dispatch) => {
     try {
@@ -15,16 +42,27 @@ export const tryLocalSignin = () => async (dispatch) => {
     };
 };
 
-export const userSignin = () => (dispatch) => {
-    const token = generate_token();
-    localStorage.setItem('token', token);
-    dispatch({
-        type: 'user-signin',
-        payload: token
-    });
+export const userSignin = (email, password) => async (dispatch) => {
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = await userCredential.user;
+
+        localStorage.setItem('token', user.accessToken);
+        dispatch({
+            type: 'user-signin',
+            payload: user.accessToken
+        });
+        dispatch({
+            type: 'set-user-uid',
+            payload: user.uid
+        });
+    } catch (err) {
+        throw new Error('Something wet wrong');
+    }
 };
 
-export const userLogOut = () => (dispatch) => {
+export const userLogOut = () => async (dispatch) => {
+    await signOut(auth);
     localStorage.removeItem('token');
     dispatch({
         type: 'user-logout',

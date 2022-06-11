@@ -73,7 +73,7 @@ const GameDetails = () => {
                         })}
                     </div>
                     <div className="game-details__screens">
-                        {currentGameScreens.results.map((screen, index) => {
+                        {currentGameScreens.results && currentGameScreens.results.map((screen, index) => {
                             return (
                                 <img onClick={() => setMainImage(screen.image)} key={screen.id} src={screen.image} alt={`${currentGame.name} image-${index + 1}`}/>
                             )
