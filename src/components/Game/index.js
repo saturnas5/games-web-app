@@ -47,8 +47,8 @@ const Game = ({ game:{ name, released, platforms, background_image, rating, rati
         })
     }
 
-    const handleGameAddLibrary = (game) => {
-        dispatch(addGameToLibrary(game))
+    const handleGameAddLibrary = (game)=> {
+        dispatch(addGameToLibrary(game, user.userUid))
         setInLibrary(true);
     }
 

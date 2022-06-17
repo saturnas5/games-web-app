@@ -69,6 +69,8 @@ const userReducer = (state = initState, action) => {
             return {...state, reviews: {...state.reviews, notWorth: [...state.reviews.notWorth, {...action.payload, review: 'notWorth', date_reviewed: formatDate(new Date())}]}}
         case 'add-game-review-awful':
             return {...state, reviews: {...state.reviews, awful: [...state.reviews.awful, {...action.payload, review: 'awful', date_reviewed: formatDate(new Date())}]}}
+        case 'fetch-state-from-firebase':
+            return {...state, library: {...action.payload}}
         default:
             return state;
     };

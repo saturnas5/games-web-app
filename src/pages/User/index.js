@@ -2,15 +2,19 @@ import React from "react";
 import SideMenu from "../../components/SideMenu";
 import {useSelector} from "react-redux";
 import defaultPhoto from '../../img/default-user.png'
-import {NavLink, Link, Switch, Route, useRouteMatch} from "react-router-dom";
+import {NavLink, Link, Switch, Route, useRouteMatch, useHistory} from "react-router-dom";
 import Library from "../../components/Library";
 import Overview from "../../components/Overview";
 import Reviews from "../../components/Reviews";
 
 const User = () => {
     const user = useSelector(state => state.user);
+    const history = useHistory();
     const match = useRouteMatch();
 
+    if(!user.token) {
+        history.push('/login')
+    } else {
     return (
         <div className='user'>
             <div className="user__side-menu">
@@ -65,6 +69,7 @@ const User = () => {
             </div>
         </div>
     );
+};
 };
 
 export default User;

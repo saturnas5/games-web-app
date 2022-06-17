@@ -40,17 +40,17 @@ const LibraryGame = ({ game }) => {
         let gameLibrary = game.library;
         if(!existingGame) {
             if(library === 'playing') {
-                dispatch(handleRemoveDispatch(gameLibrary, game))
-                dispatch(addGameToPlayingLibrary(game));
+                // dispatch(handleRemoveDispatch(gameLibrary, game))
+                dispatch(addGameToPlayingLibrary(game, user.userUid));
             } else if(library === 'completed') {
                 dispatch(handleRemoveDispatch(gameLibrary, game))
-                dispatch(addGameToCompletedLibrary(game));
+                dispatch(addGameToCompletedLibrary(game, user.userUid));
             } else if(library === 'played') {
                 dispatch(handleRemoveDispatch(gameLibrary, game))
-                dispatch(addGameToPlayedLibrary(game));
+                dispatch(addGameToPlayedLibrary(game, user.userUid));
             } else if(library === 'wantPlay') {
                 dispatch(handleRemoveDispatch(gameLibrary, game))
-                dispatch(addGameToWantPlayLibrary(game));
+                dispatch(addGameToWantPlayLibrary(game, user.userUid));
             }
         }
     };

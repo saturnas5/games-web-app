@@ -525,6 +525,10 @@ $breakpoint arguement choices:
       font-size: 2.2rem;
       font-weight: 700; }
 
+.side-menu.side-menu--fixed {
+  position: fixed;
+  top: 5rem; }
+
 .games {
   display: grid;
   grid-template-rows: 5rem auto;

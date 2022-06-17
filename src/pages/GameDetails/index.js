@@ -8,6 +8,7 @@ import ScrollToTop from "../../components/ScrollToTop";
 import GameSameSeries from "../../components/GameSameSeries";
 import Game from "../../components/Game";
 
+
 const GameDetails = () => {
     const dispatch = useDispatch();
     const { currentGame, currentGameScreens, currentGameSeries } = useSelector(state => state.games);

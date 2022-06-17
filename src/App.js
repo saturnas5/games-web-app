@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import { Route, Switch } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
-import {tryLocalSignin} from "./reducers/actions/userActions";
+import { tryLocalSignin, handleFirebaseLibraryFetch } from "./reducers/actions/userActions";
 
 import Main from "./pages/Main";
 import Header from "./components/Header";
@@ -20,6 +20,10 @@ function App() {
             dispatch(tryLocalSignin());
         }
     }, [])
+
+    useEffect(() => {
+        dispatch(handleFirebaseLibraryFetch(user.userUid))
+    }, [user.userUid])
 
   return (
     <div className="App">

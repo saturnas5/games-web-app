@@ -1,6 +1,6 @@
 import {auth, firestore} from "../../utils/firebase";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import {setDoc, doc, getDoc} from 'firebase/firestore';
+import { collection, doc, setDoc, getDoc, getDocs, query, where, collectionGroup } from "firebase/firestore";
 
 export const userSignup = (email, password, firstName, lastName) => async (dispatch) => {
     try {
@@ -14,6 +14,13 @@ export const userSignup = (email, password, firstName, lastName) => async (dispa
             email: email,
             id: user.uid,
             created: new Date(),
+            library: {
+                uncategorized: [],
+                playing: [],
+                completed: [],
+                played: [],
+                wantPlay: []
+            },
         });
         dispatch({
             type: 'user-signin',
@@ -31,10 +38,15 @@ export const userSignup = (email, password, firstName, lastName) => async (dispa
 export const tryLocalSignin = () => async (dispatch) => {
     try {
         const token = await localStorage.getItem('token');
+        const uid = await localStorage.getItem('uid')
         if(token) {
             dispatch({
                 type: 'local-signin',
                 payload: token
+            });
+            dispatch({
+                type: 'set-user-uid',
+                payload: uid
             });
         }
     } catch (err) {
@@ -48,6 +60,7 @@ export const userSignin = (email, password) => async (dispatch) => {
         const user = await userCredential.user;
 
         localStorage.setItem('token', user.accessToken);
+        localStorage.setItem('uid', user.uid)
         dispatch({
             type: 'user-signin',
             payload: user.accessToken
@@ -64,12 +77,14 @@ export const userSignin = (email, password) => async (dispatch) => {
 export const userLogOut = () => async (dispatch) => {
     await signOut(auth);
     localStorage.removeItem('token');
+    localStorage.removeItem('uid');
     dispatch({
         type: 'user-logout',
     });
 };
 
 export const removeGameFromUncategorizedLibrary = (game) => (dispatch) => {
+
     dispatch({
         type: 'remove-from-uncategorized-library',
         payload: game
@@ -104,14 +119,25 @@ export const removeGameFromWantedLibrary = (game) => (dispatch) => {
     })
 }
 
-export const addGameToLibrary = (game) => (dispatch) => {
+export const addGameToLibrary = (game) => async (dispatch) => {
+    // const userRef = doc(firestore, 'users', userId);
+    // const snap = await getDoc(userRef);
+    //
+    // await setDoc(doc(firestore, 'users', userId), {
+    //     ...snap.data(),
+    //     library: {
+    //         ...snap.data().library,
+    //         uncategorized: [...snap.data().library.uncategorized, game]
+    //     }
+    // });
+
     dispatch({
         type: 'add-game-to-library',
         payload: game
     });
 };
 
-export const addGameToPlayingLibrary = (game) => (dispatch) => {
+export const addGameToPlayingLibrary = (game, userId) => async (dispatch) => {
 
     dispatch({
         type: 'add-game-to-playing-library',
@@ -180,4 +206,17 @@ export const addGameReviewAwful = (game) => (dispatch) => {
         type: 'add-game-review-awful',
         payload: game
     })
+}
+
+// firebase data upload ====================>>
+
+export const handleFirebaseLibraryFetch = (userId) => async (dispatch) => {
+    const userRef = doc(firestore, 'users', userId);
+    const snap = await getDoc(userRef);
+    console.log(snap.data())
+
+    dispatch({
+        type: 'fetch-state-from-firebase',
+        payload: snap.data().library
+    });
 }

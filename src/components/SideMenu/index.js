@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SideMenuButton from "../SideMenuButton";
 import {currentYear, currentDate, lastMonth, currentMonth} from "../../api/api";
 import { getLastWeek, getNextWeek, formatDate } from "../../utils/_utils";
 
-const SideMenu = () => {
+const SideMenu = React.forwardRef((props, ref) => {
+    const {fixed} = props;
 
     return (
-        <div className="side-menu">
+        <div className={`side-menu ${fixed ? 'side-menu--fixed' : ''}`} ref={ref}>
             <div className="side-menu__submenu">
                 <span className="side-menu__submenu-title">New Releases</span>
                 <SideMenuButton icon='calendar' text='Last 30 days' link={`/new-releases/${currentDate}/${formatDate(lastMonth)}`}/>
@@ -30,6 +31,6 @@ const SideMenu = () => {
             </div>
         </div>
     )
-};
+});
 
 export default SideMenu;
